@@ -4,6 +4,7 @@ import ControlPart.GeneralVars;
 import element.AstartesCategory;
 
 import java.io.InputStreamReader;
+import java.util.Objects;
 
 public class CountByCategoryCommand extends CommandWithArgs {
     private static CountByCategoryCommand countByCategoryCommand;
@@ -20,12 +21,9 @@ public class CountByCategoryCommand extends CommandWithArgs {
     }
     @Override
     public void execute(String arg) {
-        AstartesCategory[] allCategoryValues = AstartesCategory.values();
-        for (int i = 0; i < allCategoryValues.length; i++){
-            System.out.printf("%d. %s%n", i + 1, allCategoryValues[i].toString());
-        }
         GeneralVars.curCol.countByCategory(AstartesCategory.valueOf(arg));
         System.out.println("count_by_category completed");
+
     }
 
     @Override

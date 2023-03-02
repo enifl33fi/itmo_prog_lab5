@@ -15,7 +15,6 @@ public class Main {
             System.out.println(e.getMessage());
             System.out.println("Unreachable block. Just in case.");
         }
-        System.out.println(System.getProperty("user.dir"));
         ProgramPerformer.start();
     }
 }

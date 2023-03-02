@@ -93,10 +93,12 @@ public class SpaceMarineCollection implements InteractiveCollection {
     public int countByCategory(AstartesCategory category) {
         int counter = 0;
         for (int i = 0; i < this.data.size(); i++){
-            if (this.data.get(i).getCategory().equals(category)){
+
+            if (Objects.equals(this.data.get(i).getCategory(), category)){
                 counter++;
             }
         }
+        System.out.println(counter);
         return counter;
     }
 

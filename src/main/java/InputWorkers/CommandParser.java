@@ -24,7 +24,6 @@ public class CommandParser {
             try {
                 commandManager.getCommand(commandParts[0]).execute(commandParts[1]);
             }catch (IndexOutOfBoundsException | WrongCommandException ignored){
-
             }
             try {
                 commandManager.getCommand(commandParts[0]).execute();
@@ -35,6 +34,9 @@ public class CommandParser {
             System.out.println(e.getMessage());
             System.out.println("Idk how that happened. Never mind.");
             console = new Scanner(System.in);
+        }catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            System.out.println("Wrong argument");
         } catch (NoSuchElementException e) {
             System.out.println(e.getMessage());
             System.exit(0);
@@ -68,6 +70,9 @@ public class CommandParser {
             System.out.println(e.getMessage());
             System.out.println("Idk how that happened. Never mind.");
             console = new Scanner(System.in);
+        }catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            System.out.println("Wrong argument");
         } catch (NoSuchElementException e) {
             System.out.println(e.getMessage());
             System.exit(0);

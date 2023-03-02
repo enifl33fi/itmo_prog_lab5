@@ -1,28 +1,28 @@
 package ControlPart;
 
-import commands.Command;
-
-import java.io.File;
-import java.lang.reflect.Modifier;
-import java.util.Objects;
+import commands.*;
 
 public class CommandLoader {
     private static final CommandManager commandManager = CommandManager.getInstance();
     public void load(){
-        try{
-            File commandPackage = new File(System.getProperty("user.dir") + "\\src\\main\\java\\" + GeneralVars.COMMAND_PACKAGE);
-            File[] commandFiles = commandPackage.listFiles();
-            for (int i = 0; i < Objects.requireNonNull(commandFiles).length; i++){
-                Class<?> clazz = Class.forName(GeneralVars.COMMAND_PACKAGE + "." + commandFiles[i].getName().split("\\.")[0]);
-                int mod = clazz.getModifiers();
-                if (!Modifier.isAbstract(mod) && !Modifier.isInterface(mod)){
-                    commandManager.addComand((Command) clazz.getMethod("getInstance").invoke(null));
-                }
+        commandManager.addComand(AddCommand.getInstance());
+        commandManager.addComand(ClearCommand.getInstance());
+        commandManager.addComand(CountByCategoryCommand.getInstance());
+        commandManager.addComand(ExecuteScriptCommand.getInstance());
+        commandManager.addComand(ExitCommand.getInstance());
+        commandManager.addComand(FilterContainsNameCommand.getInstance());
+        commandManager.addComand(HeadCommand.getInstance());
+        commandManager.addComand(HelpCommand.getInstance());
+        commandManager.addComand(InfoCommand.getInstance());
+        commandManager.addComand(PrintFieldAscendingHeartCountCommand.getInstance());
+        commandManager.addComand(RemoveByIdCommand.getInstance());
+        commandManager.addComand(RemoveFirstCommand.getInstance());
+        commandManager.addComand(RemoveLowerCommand.getInstance());
+        commandManager.addComand(SaveCommand.getInstance());
+        commandManager.addComand(ShowCommand.getInstance());
+        commandManager.addComand(UpdateCommand.getInstance());
 
-            }
-        } catch (Exception ignored) {
-            System.out.println(ignored.getMessage());
-            ignored.printStackTrace();
-        }
+
+
     }
 }

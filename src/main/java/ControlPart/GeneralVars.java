@@ -27,6 +27,6 @@ public class GeneralVars {
     public static final ReaderFiles READER_FILES = new ReaderFiles();
     public static final ScriptExecutor SCRIPT_EXECUTOR = new ScriptExecutor();
 
-    public static final String FILE_DIR = "\\src\\main\\resources\\";
+    public static final String FILE_DIR = "lib\\";
 
 }

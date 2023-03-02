@@ -1,1 +1,1 @@
-execute_script a.txt
+execute_script D:\itmo\programming\lab5\src\main\resources\a.txt

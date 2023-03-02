@@ -5,6 +5,7 @@ import element.*;
 import exceptions.NullFieldException;
 import exceptions.WrongFieldException;
 
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class ElementParser {
@@ -24,10 +25,13 @@ public class ElementParser {
             } catch (NullFieldException | WrongFieldException e) {
                 System.out.println(e.getMessage());
                 System.out.println("Read the note.");
-            } catch (IllegalStateException e) {
+            }  catch (IllegalStateException e) {
                 System.out.println(e.getMessage());
                 System.out.println("Idk how that happened. Never mind.");
                 console = new Scanner(System.in);
+            } catch (NoSuchElementException e) {
+                System.out.println(e.getMessage());
+                System.exit(0);
             } catch (Exception e){
                 System.out.println(e.getMessage());
                 e.printStackTrace();
@@ -47,10 +51,13 @@ public class ElementParser {
             } catch (WrongFieldException | IllegalArgumentException e) {
                 System.out.println(e.getMessage());
                 System.out.println("Read the note.");
-            } catch (IllegalStateException e) {
+            }  catch (IllegalStateException e) {
                 System.out.println(e.getMessage());
                 System.out.println("Idk how that happened. Never mind.");
                 console = new Scanner(System.in);
+            } catch (NoSuchElementException e) {
+                System.out.println(e.getMessage());
+                System.exit(0);
             } catch (Exception e){
                 System.out.println(e.getMessage());
                 e.printStackTrace();
@@ -70,10 +77,13 @@ public class ElementParser {
             } catch (WrongFieldException | IllegalArgumentException e) {
                 System.out.println(e.getMessage());
                 System.out.println("Read the note.");
-            } catch (IllegalStateException e) {
+            }  catch (IllegalStateException e) {
                 System.out.println(e.getMessage());
                 System.out.println("Idk how that happened. Never mind.");
                 console = new Scanner(System.in);
+            } catch (NoSuchElementException e) {
+                System.out.println(e.getMessage());
+                System.exit(0);
             } catch (Exception e){
                 System.out.println(e.getMessage());
                 e.printStackTrace();
@@ -93,10 +103,13 @@ public class ElementParser {
             } catch (WrongFieldException | IllegalArgumentException e) {
                 System.out.println(e.getMessage());
                 System.out.println("Read the note.");
-            } catch (IllegalStateException e) {
+            }  catch (IllegalStateException e) {
                 System.out.println(e.getMessage());
                 System.out.println("Idk how that happened. Never mind.");
                 console = new Scanner(System.in);
+            } catch (NoSuchElementException e) {
+                System.out.println(e.getMessage());
+                System.exit(0);
             } catch (Exception e){
                 System.out.println(e.getMessage());
                 e.printStackTrace();
@@ -116,10 +129,13 @@ public class ElementParser {
             } catch (WrongFieldException | IllegalArgumentException e) {
                 System.out.println(e.getMessage());
                 System.out.println("Read the note.");
-            } catch (IllegalStateException e) {
+            }  catch (IllegalStateException e) {
                 System.out.println(e.getMessage());
                 System.out.println("Idk how that happened. Never mind.");
                 console = new Scanner(System.in);
+            } catch (NoSuchElementException e) {
+                System.out.println(e.getMessage());
+                System.exit(0);
             } catch (Exception e){
                 System.out.println(e.getMessage());
                 e.printStackTrace();
@@ -152,10 +168,13 @@ public class ElementParser {
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
                 System.out.println("Read the note.");
-            } catch (IllegalStateException e) {
+            }  catch (IllegalStateException e) {
                 System.out.println(e.getMessage());
                 System.out.println("Idk how that happened. Never mind.");
                 console = new Scanner(System.in);
+            } catch (NoSuchElementException e) {
+                System.out.println(e.getMessage());
+                System.exit(0);
             } catch (Exception e){
                 System.out.println(e.getMessage());
                 e.printStackTrace();
@@ -188,10 +207,13 @@ public class ElementParser {
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
                 System.out.println("Read the note.");
-            } catch (IllegalStateException e) {
+            }  catch (IllegalStateException e) {
                 System.out.println(e.getMessage());
                 System.out.println("Idk how that happened. Never mind.");
                 console = new Scanner(System.in);
+            } catch (NoSuchElementException e) {
+                System.out.println(e.getMessage());
+                System.exit(0);
             } catch (Exception e){
                 System.out.println(e.getMessage());
                 e.printStackTrace();
@@ -211,10 +233,13 @@ public class ElementParser {
             } catch (NullFieldException | WrongFieldException e) {
                 System.out.println(e.getMessage());
                 System.out.println("Read the note.");
-            } catch (IllegalStateException e) {
+            }  catch (IllegalStateException e) {
                 System.out.println(e.getMessage());
                 System.out.println("Idk how that happened. Never mind.");
                 console = new Scanner(System.in);
+            } catch (NoSuchElementException e) {
+                System.out.println(e.getMessage());
+                System.exit(0);
             } catch (Exception e){
                 System.out.println(e.getMessage());
                 e.printStackTrace();
@@ -234,10 +259,13 @@ public class ElementParser {
             } catch (WrongFieldException | IllegalArgumentException e) {
                 System.out.println(e.getMessage());
                 System.out.println("Read the note.");
-            } catch (IllegalStateException e) {
+            }  catch (IllegalStateException e) {
                 System.out.println(e.getMessage());
                 System.out.println("Idk how that happened. Never mind.");
                 console = new Scanner(System.in);
+            } catch (NoSuchElementException e) {
+                System.out.println(e.getMessage());
+                System.exit(0);
             } catch (Exception e){
                 System.out.println(e.getMessage());
                 e.printStackTrace();

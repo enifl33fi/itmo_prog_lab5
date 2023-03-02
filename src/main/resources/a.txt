@@ -1,2 +1,14 @@
 show
-execute_script b.txt
+add
+13
+1
+2
+1.0
+3
+
+
+I
+9
+show
+save
+execute_script D:\itmo\programming\lab5\src\main\resources\b.txt

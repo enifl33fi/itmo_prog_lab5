@@ -6,6 +6,7 @@ import exceptions.WrongCommandException;
 
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class CommandParser {
@@ -30,6 +31,13 @@ public class CommandParser {
             }catch (WrongCommandException ignored){
 
             }
+        }  catch (IllegalStateException e) {
+            System.out.println(e.getMessage());
+            System.out.println("Idk how that happened. Never mind.");
+            console = new Scanner(System.in);
+        } catch (NoSuchElementException e) {
+            System.out.println(e.getMessage());
+            System.exit(0);
         } catch (WrongCommandException e){
             System.out.println(e.getMessage());
         } catch (NullPointerException | IndexOutOfBoundsException e){
@@ -56,6 +64,13 @@ public class CommandParser {
             }catch (WrongCommandException ignored){
             }
 
+        } catch (IllegalStateException e) {
+            System.out.println(e.getMessage());
+            System.out.println("Idk how that happened. Never mind.");
+            console = new Scanner(System.in);
+        } catch (NoSuchElementException e) {
+            System.out.println(e.getMessage());
+            System.exit(0);
         } catch (WrongCommandException e){
             System.out.println(e.getMessage());
         } catch (NullPointerException e){

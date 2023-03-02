@@ -15,7 +15,7 @@ public class ScriptExecutor {
     public void execute(String fileName){
         GeneralVars.curExecutionFiles.push(fileName);
         CommandParser commandParser = new CommandParser();
-        try(InputStreamReader inputStream = new InputStreamReader(new FileInputStream(System.getProperty("user.dir") + GeneralVars.FILE_DIR + fileName))) {
+        try(InputStreamReader inputStream = new InputStreamReader(new FileInputStream(fileName))) {
             String line = reader.getLine(inputStream);
             while (line != null){
 

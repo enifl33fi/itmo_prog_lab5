@@ -27,9 +27,9 @@ public class AddCommand extends CommandWithElem {
 
     @Override
     public void executeFromScript(InputStreamReader reader){
-        String[] spaceMarineParts = new String[GeneralVars.VAR_COUNT];
+        String[] spaceMarineParts = new String[GeneralVars.VAR_COUNT - 2];
         try{
-            for (int i = 0; i < GeneralVars.VAR_COUNT; i++){
+            for (int i = 0; i < GeneralVars.VAR_COUNT - 2; i++){
                 spaceMarineParts[i] = GeneralVars.READER_FILES.getLine(reader);
             }
             GeneralVars.curCol.add(GeneralVars.ELEMENT_VALIDATOR.validateSpaceMarine(spaceMarineParts));

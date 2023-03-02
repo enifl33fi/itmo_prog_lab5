@@ -54,7 +54,6 @@ public class CommandParser {
             try {
                 commandManager.getCommand(commandParts[0]).executeFromScript(reader);
             }catch (WrongCommandException ignored){
-                System.out.println(ignored.getMessage());
             }
 
         } catch (WrongCommandException e){

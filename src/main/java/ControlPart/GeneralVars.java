@@ -12,6 +12,7 @@ public class GeneralVars {
         commandLoader.load();
 
     }
+
     public static SpaceMarineCollection curCol = new SpaceMarineCollection();
     public static final int VAR_COUNT = 11;
     public static String saveFileName;

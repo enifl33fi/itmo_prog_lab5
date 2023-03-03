@@ -11,8 +11,8 @@ public class RemoveFirstCommand extends CommandWithOutArgs {
         super(name);
     }
 
-    public static RemoveFirstCommand getInstance(){
-        if (removeFirstCommand == null){
+    public static RemoveFirstCommand getInstance() {
+        if (removeFirstCommand == null) {
             removeFirstCommand = new RemoveFirstCommand("remove_first");
         }
         return removeFirstCommand;
@@ -23,6 +23,7 @@ public class RemoveFirstCommand extends CommandWithOutArgs {
         GeneralVars.curCol.removeFirst();
         System.out.println("remove_first completed");
     }
+
     @Override
     public void executeFromScript(InputStreamReader reader) {
         this.execute();

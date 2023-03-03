@@ -1,7 +1,7 @@
 package exceptions;
 
-public class NotEnoughFieldsException extends RuntimeException{
-    public NotEnoughFieldsException(String message){
+public class NotEnoughFieldsException extends RuntimeException {
+    public NotEnoughFieldsException(String message) {
         super(message);
     }
 }

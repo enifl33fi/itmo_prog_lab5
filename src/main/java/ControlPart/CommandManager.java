@@ -12,19 +12,22 @@ public class CommandManager {
     private CommandManager() {
     }
 
-    public static CommandManager getInstance(){
-        if (commandManager == null){
+    public static CommandManager getInstance() {
+        if (commandManager == null) {
             commandManager = new CommandManager();
         }
         return commandManager;
     }
-    public void addComand(Command command){
+
+    public void addComand(Command command) {
         this.data.put(command.getName(), command);
     }
-    public void removeCommand(String key){
+
+    public void removeCommand(String key) {
         this.data.remove(key);
     }
-    public Command getCommand(String key){
+
+    public Command getCommand(String key) {
         return this.data.get(key);
     }
 }

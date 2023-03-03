@@ -18,20 +18,20 @@ import java.util.*;
 public class CollectionGenerator {
     public void generateFromCSV(String fileName) {
         ReaderFiles reader = GeneralVars.READER_FILES;
-        try(InputStreamReader inputStream = new InputStreamReader(new FileInputStream(fileName))){
+        try (InputStreamReader inputStream = new InputStreamReader(new FileInputStream(fileName))) {
             String line = reader.getLine(inputStream);
             line = reader.getLine(inputStream);
             List<Long> ids = new ArrayList<>();
             ElementValidator elementValidator = new ElementValidator();
             int i = 0;
-            while (line != null){
+            while (line != null) {
                 i++;
                 String[] info = line.split(",", -1);
-                try{
-                    if (info.length != GeneralVars.VAR_COUNT){
+                try {
+                    if (info.length != GeneralVars.VAR_COUNT) {
                         throw new NotEnoughFieldsException("line number " + i + " don't have enough fields");
                     }
-                }catch (NotEnoughFieldsException e){
+                } catch (NotEnoughFieldsException e) {
                     System.out.println(e.getMessage());
                     System.out.println("The whole line number " + i + " will be lost. Sorry <(。_。)>");
                     continue;
@@ -41,18 +41,18 @@ public class CollectionGenerator {
                     GeneralVars.curCol.add(spaceMarine);
                     ids.add(spaceMarine.getId());
 
-                }catch (ParseException e){
+                } catch (ParseException e) {
                     System.out.println(e.getMessage());
                     System.out.println("Not correct pattern for data.\nCorrect pattern: EEE MMM dd kk:mm:ss z yyyy.");
                     System.out.println("The whole line number " + i + " will be lost. Sorry <(。_。)>");
-                }catch (NumberFormatException e){
+                } catch (NumberFormatException e) {
                     System.out.println(e.getMessage());
                     System.out.println("One of number-format fields was empty");
                     System.out.println("The whole line number " + i + " will be lost. Sorry <(。_。)>");
-                }catch (WrongFieldException | NullFieldException | IdCollapseException e){
+                } catch (WrongFieldException | NullFieldException | IdCollapseException e) {
                     System.out.println(e.getMessage());
                     System.out.println("The whole line number " + i + " will be lost. Sorry <(。_。)>");
-                }catch (Exception e){
+                } catch (Exception e) {
                     System.out.println(e.getMessage());
                     e.printStackTrace();
                     System.out.println("Unreachable block. Just in case.");
@@ -62,7 +62,7 @@ public class CollectionGenerator {
         } catch (SecurityException | IOException e) {
             System.out.println(e.getMessage());
             System.out.println("Couldn't find given file. It's impossible to read");
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
             System.out.println("Unreachable block. Just in case.");

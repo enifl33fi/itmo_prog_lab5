@@ -11,8 +11,8 @@ public class SaveCommand extends CommandWithOutArgs {
         super(name);
     }
 
-    public static SaveCommand getInstance(){
-        if (saveCommand == null){
+    public static SaveCommand getInstance() {
+        if (saveCommand == null) {
             saveCommand = new SaveCommand("save");
         }
         return saveCommand;
@@ -24,6 +24,7 @@ public class SaveCommand extends CommandWithOutArgs {
         writerCSV.save();
         System.out.println("save completed");
     }
+
     @Override
     public void executeFromScript(InputStreamReader reader) {
         this.execute();

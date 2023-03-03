@@ -2,7 +2,7 @@ package commands;
 
 import java.io.InputStreamReader;
 
-public class HelpCommand extends CommandWithOutArgs{
+public class HelpCommand extends CommandWithOutArgs {
 
     private static HelpCommand helpCommand;
 
@@ -10,8 +10,8 @@ public class HelpCommand extends CommandWithOutArgs{
         super(name);
     }
 
-    public static HelpCommand getInstance(){
-        if (helpCommand == null){
+    public static HelpCommand getInstance() {
+        if (helpCommand == null) {
             helpCommand = new HelpCommand("help");
         }
         return helpCommand;
@@ -44,7 +44,6 @@ public class HelpCommand extends CommandWithOutArgs{
     public void executeFromScript(InputStreamReader reader) {
         this.execute();
     }
-
 
 
 }

@@ -1,9 +1,9 @@
 package exceptions;
 
-public class WrongCommandException extends RuntimeException{
+public class WrongCommandException extends RuntimeException {
     private static final String msg = "Unknown command";
 
-    public WrongCommandException(){
+    public WrongCommandException() {
         super(msg);
     }
 

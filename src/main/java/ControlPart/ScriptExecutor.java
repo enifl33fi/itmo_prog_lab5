@@ -12,12 +12,13 @@ import java.util.List;
 
 public class ScriptExecutor {
     public static final ReaderFiles reader = new ReaderFiles();
-    public void execute(String fileName){
+
+    public void execute(String fileName) {
         GeneralVars.curExecutionFiles.push(fileName);
         CommandParser commandParser = new CommandParser();
-        try(InputStreamReader inputStream = new InputStreamReader(new FileInputStream(fileName))) {
+        try (InputStreamReader inputStream = new InputStreamReader(new FileInputStream(fileName))) {
             String line = reader.getLine(inputStream);
-            while (line != null){
+            while (line != null) {
 
                 commandParser.parseFromScript(line, inputStream);
                 line = reader.getLine(inputStream);

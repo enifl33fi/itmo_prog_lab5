@@ -6,7 +6,7 @@ import exceptions.WrongFieldException;
 import java.text.DateFormat;
 import java.util.Date;
 
-public class SpaceMarine implements CollectionPart{
+public class SpaceMarine implements CollectionPart {
     private long id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null
@@ -19,23 +19,23 @@ public class SpaceMarine implements CollectionPart{
 
     private static long nextID = 1;
 
-    public SpaceMarine(String name, Coordinates coordinates, Double health, int heartCount, AstartesCategory category, MeleeWeapon meleeWeapon, Chapter chapter, long id, Date creationDate){
-        if (name == null || name.equals("")){
+    public SpaceMarine(String name, Coordinates coordinates, Double health, int heartCount, AstartesCategory category, MeleeWeapon meleeWeapon, Chapter chapter, long id, Date creationDate) {
+        if (name == null || name.equals("")) {
             throw new NullFieldException("name");
         }
-        if (coordinates == null){
+        if (coordinates == null) {
             throw new NullFieldException("coordinates");
         }
-        if (health != null && health <= 0){
+        if (health != null && health <= 0) {
             throw new WrongFieldException("The value of the health field must be greater than 0");
         }
-        if (heartCount <= 0 || heartCount > 3){
+        if (heartCount <= 0 || heartCount > 3) {
             throw new WrongFieldException("The value of the heartCount field must be greater than 0.The value of the heartCount field must be less than or equal to 3.");
         }
-        if (chapter == null){
+        if (chapter == null) {
             throw new NullFieldException("chapter");
         }
-        if (id <= 0){
+        if (id <= 0) {
             throw new WrongFieldException("The value of the id field must be greater than 0");
         }
         this.id = id;
@@ -47,11 +47,12 @@ public class SpaceMarine implements CollectionPart{
         this.category = category;
         this.meleeWeapon = meleeWeapon;
         this.chapter = chapter;
-        if (id >= nextID){
+        if (id >= nextID) {
             nextID = id + 1;
         }
     }
-    public SpaceMarine(String name, Coordinates coordinates, Double health, int heartCount, AstartesCategory category, MeleeWeapon meleeWeapon, Chapter chapter){
+
+    public SpaceMarine(String name, Coordinates coordinates, Double health, int heartCount, AstartesCategory category, MeleeWeapon meleeWeapon, Chapter chapter) {
         this(name, coordinates, health, heartCount, category, meleeWeapon, chapter, nextID++, new Date());
     }
 
@@ -127,18 +128,18 @@ public class SpaceMarine implements CollectionPart{
     @Override
     public String toLineCSV() {
         String strCategory = "";
-        if (this.category != null){
+        if (this.category != null) {
             strCategory = this.category.toString();
         }
         String strMeleeWeapon = "";
-        if (this.meleeWeapon != null){
+        if (this.meleeWeapon != null) {
             strMeleeWeapon = this.meleeWeapon.toString();
         }
-        return String.format("%s,%d,%d,%s,%d,%s,%s,%s,%d,%d,%s", this.name, this.coordinates.getX(), this.coordinates.getY(), this.health.toString().replace(',', '.'), this.heartCount, strCategory, strMeleeWeapon, this.chapter.getName(), this.chapter.getMarinesCount(),this.id, this.creationDate);
+        return String.format("%s,%d,%d,%s,%d,%s,%s,%s,%d,%d,%s", this.name, this.coordinates.getX(), this.coordinates.getY(), this.health.toString().replace(',', '.'), this.heartCount, strCategory, strMeleeWeapon, this.chapter.getName(), this.chapter.getMarinesCount(), this.id, this.creationDate);
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return String.format("id: %d%n" +
                 "name: %s%n" +
                 "coordinates:%n" +

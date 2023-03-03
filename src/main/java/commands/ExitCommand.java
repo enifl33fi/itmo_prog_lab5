@@ -9,12 +9,13 @@ public class ExitCommand extends CommandWithOutArgs {
         super(name);
     }
 
-    public static ExitCommand getInstance(){
-        if (exitCommand == null){
+    public static ExitCommand getInstance() {
+        if (exitCommand == null) {
             exitCommand = new ExitCommand("exit");
         }
         return exitCommand;
     }
+
     @Override
     public void execute() {
         System.out.println("bye bye");

@@ -4,7 +4,8 @@ import commands.*;
 
 public class CommandLoader {
     private static final CommandManager commandManager = CommandManager.getInstance();
-    public void load(){
+
+    public void load() {
         commandManager.addComand(AddCommand.getInstance());
         commandManager.addComand(ClearCommand.getInstance());
         commandManager.addComand(CountByCategoryCommand.getInstance());
@@ -21,7 +22,6 @@ public class CommandLoader {
         commandManager.addComand(SaveCommand.getInstance());
         commandManager.addComand(ShowCommand.getInstance());
         commandManager.addComand(UpdateCommand.getInstance());
-
 
 
     }

@@ -13,145 +13,150 @@ public class ElementParser {
     Scanner console = new Scanner(System.in);
 
 
-    public String parseName(){
-        while (true){
+    public String parseName() {
+        while (true) {
             try {
                 System.out.println("""
-                Please enter the field name.
-                Note: The field cannot be null or empty. The field cannot contain commas.
-                """);
+                        Please enter the field name.
+                        Note: The field cannot be null or empty. The field cannot contain commas.
+                        """);
                 String name = elementValidator.validateName(this.console.nextLine());
                 return name;
             } catch (NullFieldException | WrongFieldException e) {
                 System.out.println(e.getMessage());
                 System.out.println("Read the note.");
-            }  catch (IllegalStateException e) {
+            } catch (IllegalStateException e) {
                 System.out.println(e.getMessage());
                 System.out.println("Idk how that happened. Never mind.");
                 console = new Scanner(System.in);
             } catch (NoSuchElementException e) {
                 System.out.println(e.getMessage());
                 System.exit(0);
-            } catch (Exception e){
+            } catch (Exception e) {
                 System.out.println(e.getMessage());
                 e.printStackTrace();
                 System.out.println("Unreachable block. Just in case.");
             }
         }
     }
-    public int parseX(){
-        while (true){
+
+    public int parseX() {
+        while (true) {
             try {
                 System.out.println("""
-                Please enter the field x in Coordinates.
-                Note: x is a numeric field. The value of the field must be less than or equal to 201.
-                """);
+                        Please enter the field x in Coordinates.
+                        Note: x is a numeric field. The value of the field must be less than or equal to 201.
+                        """);
                 int x = elementValidator.validateX(this.console.nextLine());
-                return  x;
+                return x;
             } catch (WrongFieldException | IllegalArgumentException e) {
                 System.out.println(e.getMessage());
                 System.out.println("Read the note.");
-            }  catch (IllegalStateException e) {
+            } catch (IllegalStateException e) {
                 System.out.println(e.getMessage());
                 System.out.println("Idk how that happened. Never mind.");
                 console = new Scanner(System.in);
             } catch (NoSuchElementException e) {
                 System.out.println(e.getMessage());
                 System.exit(0);
-            } catch (Exception e){
+            } catch (Exception e) {
                 System.out.println(e.getMessage());
                 e.printStackTrace();
                 System.out.println("Unreachable block. Just in case.");
             }
         }
     }
-    public int parseY(){
-        while (true){
+
+    public int parseY() {
+        while (true) {
             try {
                 System.out.println("""
-                Please enter the field y in Coordinates.
-                Note: y is a numeric field. The value of the field must be greater than -440.
-                """);
+                        Please enter the field y in Coordinates.
+                        Note: y is a numeric field. The value of the field must be greater than -440.
+                        """);
                 int y = elementValidator.validateY(this.console.nextLine());
                 return y;
             } catch (WrongFieldException | IllegalArgumentException e) {
                 System.out.println(e.getMessage());
                 System.out.println("Read the note.");
-            }  catch (IllegalStateException e) {
+            } catch (IllegalStateException e) {
                 System.out.println(e.getMessage());
                 System.out.println("Idk how that happened. Never mind.");
                 console = new Scanner(System.in);
             } catch (NoSuchElementException e) {
                 System.out.println(e.getMessage());
                 System.exit(0);
-            } catch (Exception e){
+            } catch (Exception e) {
                 System.out.println(e.getMessage());
                 e.printStackTrace();
                 System.out.println("Unreachable block. Just in case.");
             }
         }
     }
-    public Double parseHealth(){
-        while (true){
+
+    public Double parseHealth() {
+        while (true) {
             try {
                 System.out.println("""
-                Please enter the field health.
-                Note: Health is a fractional field. The field can be null. The value of the field must be greater than 0.
-                """);
+                        Please enter the field health.
+                        Note: Health is a fractional field. The field can be null. The value of the field must be greater than 0.
+                        """);
                 Double health = elementValidator.validateHealth(this.console.nextLine());
                 return health;
             } catch (WrongFieldException | IllegalArgumentException e) {
                 System.out.println(e.getMessage());
                 System.out.println("Read the note.");
-            }  catch (IllegalStateException e) {
+            } catch (IllegalStateException e) {
                 System.out.println(e.getMessage());
                 System.out.println("Idk how that happened. Never mind.");
                 console = new Scanner(System.in);
             } catch (NoSuchElementException e) {
                 System.out.println(e.getMessage());
                 System.exit(0);
-            } catch (Exception e){
+            } catch (Exception e) {
                 System.out.println(e.getMessage());
                 e.printStackTrace();
                 System.out.println("Unreachable block. Just in case.");
             }
         }
     }
-    public int parseHeartCount(){
-        while (true){
+
+    public int parseHeartCount() {
+        while (true) {
             try {
                 System.out.println("""
-                Please enter the field heartCount.
-                Note: heartCount is a numeric field. The value of the field must be greater than 0.The value of the heartCount field must be less than or equal to 3.
-                """);
+                        Please enter the field heartCount.
+                        Note: heartCount is a numeric field. The value of the field must be greater than 0.The value of the heartCount field must be less than or equal to 3.
+                        """);
                 int heartCount = elementValidator.validateHeartCount(this.console.nextLine());
                 return heartCount;
             } catch (WrongFieldException | IllegalArgumentException e) {
                 System.out.println(e.getMessage());
                 System.out.println("Read the note.");
-            }  catch (IllegalStateException e) {
+            } catch (IllegalStateException e) {
                 System.out.println(e.getMessage());
                 System.out.println("Idk how that happened. Never mind.");
                 console = new Scanner(System.in);
             } catch (NoSuchElementException e) {
                 System.out.println(e.getMessage());
                 System.exit(0);
-            } catch (Exception e){
+            } catch (Exception e) {
                 System.out.println(e.getMessage());
                 e.printStackTrace();
                 System.out.println("Unreachable block. Just in case.");
             }
         }
     }
-    public AstartesCategory parseCategory(){
+
+    public AstartesCategory parseCategory() {
         AstartesCategory[] allCategoryValues = AstartesCategory.values();
-        while (true){
+        while (true) {
             try {
                 System.out.println("""
-                Please enter the field category.
-                Note: The field can be null.
-                """);
-                for (int i = 0; i < allCategoryValues.length; i++){
+                        Please enter the field category.
+                        Note: The field can be null.
+                        """);
+                for (int i = 0; i < allCategoryValues.length; i++) {
                     System.out.printf("%d. %s%n", i + 1, allCategoryValues[i].toString());
                 }
                 System.out.println("Note: You can insert either numbers or values\n");
@@ -160,7 +165,7 @@ public class ElementParser {
                     int index = Integer.parseInt(line);
                     AstartesCategory category = allCategoryValues[index - 1];
                     return category;
-                }catch (NumberFormatException ignored){
+                } catch (NumberFormatException ignored) {
 
                 }
                 AstartesCategory category = elementValidator.validateCategory(line);
@@ -168,29 +173,30 @@ public class ElementParser {
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
                 System.out.println("Read the note.");
-            }  catch (IllegalStateException e) {
+            } catch (IllegalStateException e) {
                 System.out.println(e.getMessage());
                 System.out.println("Idk how that happened. Never mind.");
                 console = new Scanner(System.in);
             } catch (NoSuchElementException e) {
                 System.out.println(e.getMessage());
                 System.exit(0);
-            } catch (Exception e){
+            } catch (Exception e) {
                 System.out.println(e.getMessage());
                 e.printStackTrace();
                 System.out.println("Unreachable block. Just in case.");
             }
         }
     }
-    public MeleeWeapon parseMeleeWeapon(){
+
+    public MeleeWeapon parseMeleeWeapon() {
         MeleeWeapon[] allWeaponValues = MeleeWeapon.values();
-        while (true){
+        while (true) {
             try {
                 System.out.println("""
-                Please enter the field meleeWeapon.
-                Note: The field can be null.
-                """);
-                for (int i = 0; i < allWeaponValues.length; i++){
+                        Please enter the field meleeWeapon.
+                        Note: The field can be null.
+                        """);
+                for (int i = 0; i < allWeaponValues.length; i++) {
                     System.out.printf("%d. %s%n", i + 1, allWeaponValues[i].toString());
                 }
                 System.out.println("Note: You can insert either numbers or values\n");
@@ -199,7 +205,7 @@ public class ElementParser {
                     int index = Integer.parseInt(line);
                     MeleeWeapon meleeWeapon = allWeaponValues[index - 1];
                     return meleeWeapon;
-                }catch (NumberFormatException ignored){
+                } catch (NumberFormatException ignored) {
 
                 }
                 MeleeWeapon meleeWeapon = elementValidator.validateMeleeWeapon(line);
@@ -207,73 +213,76 @@ public class ElementParser {
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
                 System.out.println("Read the note.");
-            }  catch (IllegalStateException e) {
+            } catch (IllegalStateException e) {
                 System.out.println(e.getMessage());
                 System.out.println("Idk how that happened. Never mind.");
                 console = new Scanner(System.in);
             } catch (NoSuchElementException e) {
                 System.out.println(e.getMessage());
                 System.exit(0);
-            } catch (Exception e){
+            } catch (Exception e) {
                 System.out.println(e.getMessage());
                 e.printStackTrace();
                 System.out.println("Unreachable block. Just in case.");
             }
         }
     }
-    public String parseChapterName(){
-        while (true){
+
+    public String parseChapterName() {
+        while (true) {
             try {
                 System.out.println("""
-                Please enter the field name in Chapter.
-                Note: The field cannot be null or empty. The field cannot contain commas.
-                """);
+                        Please enter the field name in Chapter.
+                        Note: The field cannot be null or empty. The field cannot contain commas.
+                        """);
                 String chapterName = elementValidator.validateChapterName(this.console.nextLine());
                 return chapterName;
             } catch (NullFieldException | WrongFieldException e) {
                 System.out.println(e.getMessage());
                 System.out.println("Read the note.");
-            }  catch (IllegalStateException e) {
+            } catch (IllegalStateException e) {
                 System.out.println(e.getMessage());
                 System.out.println("Idk how that happened. Never mind.");
                 console = new Scanner(System.in);
             } catch (NoSuchElementException e) {
                 System.out.println(e.getMessage());
                 System.exit(0);
-            } catch (Exception e){
+            } catch (Exception e) {
                 System.out.println(e.getMessage());
                 e.printStackTrace();
                 System.out.println("Unreachable block. Just in case.");
             }
         }
     }
-    public Integer parseMarinesCount(){
-        while (true){
+
+    public Integer parseMarinesCount() {
+        while (true) {
             try {
                 System.out.println("""
-                Please enter the field marinesCount in Chapter.
-                Note: MarinesCount is a numeric field. The field can be null. The value of the field must be greater than 0, the maximum value of the field: 1000.
-                """);
+                        Please enter the field marinesCount in Chapter.
+                        Note: MarinesCount is a numeric field. The field can be null. The value of the field must be greater than 0, the maximum value of the field: 1000.
+                        """);
                 Integer marinesCount = elementValidator.validateMarinesCount(this.console.nextLine());
                 return marinesCount;
             } catch (WrongFieldException | IllegalArgumentException e) {
                 System.out.println(e.getMessage());
                 System.out.println("Read the note.");
-            }  catch (IllegalStateException e) {
+            } catch (IllegalStateException e) {
                 System.out.println(e.getMessage());
                 System.out.println("Idk how that happened. Never mind.");
                 console = new Scanner(System.in);
             } catch (NoSuchElementException e) {
                 System.out.println(e.getMessage());
                 System.exit(0);
-            } catch (Exception e){
+            } catch (Exception e) {
                 System.out.println(e.getMessage());
                 e.printStackTrace();
                 System.out.println("Unreachable block. Just in case.");
             }
         }
     }
-    public SpaceMarine parseElement(){
+
+    public SpaceMarine parseElement() {
         String name = this.parseName();
         Coordinates coordinates = new Coordinates(this.parseX(), this.parseY());
         Double health = this.parseHealth();

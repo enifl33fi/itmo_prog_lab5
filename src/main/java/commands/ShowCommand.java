@@ -23,6 +23,7 @@ public class ShowCommand extends CommandWithOutArgs {
         GeneralVars.curCol.show();
         System.out.println("show completed");
     }
+
     @Override
     public void executeFromScript(InputStreamReader reader) {
         this.execute();

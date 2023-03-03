@@ -11,17 +11,19 @@ public class ClearCommand extends CommandWithOutArgs {
         super(name);
     }
 
-    public static ClearCommand getInstance(){
-        if (clearCommand == null){
+    public static ClearCommand getInstance() {
+        if (clearCommand == null) {
             clearCommand = new ClearCommand("clear");
         }
         return clearCommand;
     }
+
     @Override
     public void execute() {
         GeneralVars.curCol.clear();
         System.out.println("clear completed");
     }
+
     @Override
     public void executeFromScript(InputStreamReader reader) {
         this.execute();

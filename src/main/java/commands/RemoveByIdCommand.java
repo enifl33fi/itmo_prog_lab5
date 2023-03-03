@@ -11,12 +11,13 @@ public class RemoveByIdCommand extends CommandWithArgs {
         super(name);
     }
 
-    public static RemoveByIdCommand getInstance(){
-        if (removeByIdCommand == null){
+    public static RemoveByIdCommand getInstance() {
+        if (removeByIdCommand == null) {
             removeByIdCommand = new RemoveByIdCommand("remove_by_id");
         }
         return removeByIdCommand;
     }
+
     @Override
     public void execute(String arg) {
         GeneralVars.curCol.removeById(Long.parseLong(arg));
@@ -24,7 +25,7 @@ public class RemoveByIdCommand extends CommandWithArgs {
     }
 
     @Override
-    public void executeFromScript(String arg, InputStreamReader reader){
+    public void executeFromScript(String arg, InputStreamReader reader) {
         this.execute(arg);
     }
 }

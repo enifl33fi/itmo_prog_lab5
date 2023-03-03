@@ -13,12 +13,13 @@ public class CountByCategoryCommand extends CommandWithArgs {
         super(name);
     }
 
-    public static CountByCategoryCommand getInstance(){
-        if (countByCategoryCommand == null){
+    public static CountByCategoryCommand getInstance() {
+        if (countByCategoryCommand == null) {
             countByCategoryCommand = new CountByCategoryCommand("count_by_category");
         }
         return countByCategoryCommand;
     }
+
     @Override
     public void execute(String arg) {
         GeneralVars.curCol.countByCategory(AstartesCategory.valueOf(arg));
@@ -27,7 +28,7 @@ public class CountByCategoryCommand extends CommandWithArgs {
     }
 
     @Override
-    public void executeFromScript(String arg, InputStreamReader reader){
+    public void executeFromScript(String arg, InputStreamReader reader) {
         this.execute(arg);
     }
 }

@@ -11,12 +11,13 @@ public class FilterContainsNameCommand extends CommandWithArgs {
         super(name);
     }
 
-    public static FilterContainsNameCommand getInstance(){
-        if (filterContainsNameCommand == null){
+    public static FilterContainsNameCommand getInstance() {
+        if (filterContainsNameCommand == null) {
             filterContainsNameCommand = new FilterContainsNameCommand("filter_contains_name");
         }
         return filterContainsNameCommand;
     }
+
     @Override
     public void execute(String arg) {
         GeneralVars.curCol.filterContainsName(arg);
@@ -24,7 +25,7 @@ public class FilterContainsNameCommand extends CommandWithArgs {
     }
 
     @Override
-    public void executeFromScript(String arg, InputStreamReader reader){
+    public void executeFromScript(String arg, InputStreamReader reader) {
         this.execute(arg);
     }
 }

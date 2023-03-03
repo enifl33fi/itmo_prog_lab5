@@ -7,11 +7,11 @@ public class Chapter {
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Integer marinesCount; //Поле не может быть null, Значение поля должно быть больше 0, Максимальное значение поля: 1000
 
-    public Chapter(String name, Integer marinesCount){
-        if (name == null || name.equals("")){
+    public Chapter(String name, Integer marinesCount) {
+        if (name == null || name.equals("")) {
             throw new NullFieldException("chapterName");
         }
-        if (marinesCount != null && (marinesCount <= 0 || marinesCount > 1000)){
+        if (marinesCount != null && (marinesCount <= 0 || marinesCount > 1000)) {
             throw new WrongFieldException("The value of the field marinesCount must be greater than 0, the maximum value of the field: 1000");
         } else if (marinesCount == null) {
             throw new NullFieldException("marinesCount");

@@ -13,12 +13,13 @@ public class UpdateCommand extends CommandWithElem {
         super(name);
     }
 
-    public static UpdateCommand getInstance(){
-        if (updateCommand == null){
+    public static UpdateCommand getInstance() {
+        if (updateCommand == null) {
             updateCommand = new UpdateCommand("update");
         }
         return updateCommand;
     }
+
     @Override
     public void execute(String arg) {
         GeneralVars.curCol.update(Long.parseLong(arg), elementParser.parseElement());
@@ -26,10 +27,10 @@ public class UpdateCommand extends CommandWithElem {
     }
 
     @Override
-    public void executeFromScript(String arg, InputStreamReader reader){
+    public void executeFromScript(String arg, InputStreamReader reader) {
         String[] spaceMarineParts = new String[GeneralVars.VAR_COUNT];
-        try{
-            for (int i = 0; i < GeneralVars.VAR_COUNT; i++){
+        try {
+            for (int i = 0; i < GeneralVars.VAR_COUNT; i++) {
                 spaceMarineParts[i] = GeneralVars.READER_FILES.getLine(reader);
             }
             GeneralVars.curCol.update(Long.parseLong(arg), GeneralVars.ELEMENT_VALIDATOR.validateSpaceMarine(spaceMarineParts));

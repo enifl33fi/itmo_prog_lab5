@@ -24,12 +24,13 @@ public class CommandParser {
             try {
                 commandManager.getCommand(commandParts[0]).execute(commandParts[1]);
             }catch (IndexOutOfBoundsException | WrongCommandException ignored){
+                if (commandParts.length == 2){
+                    throw new WrongCommandException();
+                }
             }
-            try {
-                commandManager.getCommand(commandParts[0]).execute();
-            }catch (WrongCommandException ignored){
 
-            }
+            commandManager.getCommand(commandParts[0]).execute();
+
         }  catch (IllegalStateException e) {
             System.out.println(e.getMessage());
             System.out.println("Idk how that happened. Never mind.");
@@ -59,12 +60,12 @@ public class CommandParser {
             try {
                 commandManager.getCommand(commandParts[0]).executeFromScript(commandParts[1], reader);
             }catch (IndexOutOfBoundsException | WrongCommandException ignored){
+                if (commandParts.length == 2){
+                    throw new WrongCommandException();
+                }
+            }
+            commandManager.getCommand(commandParts[0]).executeFromScript(reader);
 
-            }
-            try {
-                commandManager.getCommand(commandParts[0]).executeFromScript(reader);
-            }catch (WrongCommandException ignored){
-            }
 
         } catch (IllegalStateException e) {
             System.out.println(e.getMessage());

@@ -11,8 +11,8 @@ public class HeadCommand extends CommandWithOutArgs {
         super(name);
     }
 
-    public static HeadCommand getInstance(){
-        if (headCommand == null){
+    public static HeadCommand getInstance() {
+        if (headCommand == null) {
             headCommand = new HeadCommand("head");
         }
         return headCommand;

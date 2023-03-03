@@ -1,6 +1,6 @@
 package commands;
 
-public abstract class CommandWithOutArgs extends Command{
+public abstract class CommandWithOutArgs extends Command {
     {
         this.haveArgs = false;
     }

@@ -13,25 +13,31 @@ public abstract class Command {
         this.name = name;
     }
 
-    public String getName(){
+    public String getName() {
         return this.name;
     }
-    public void execute(){
+
+    public void execute() {
         throw new WrongCommandException();
     }
-    public void execute(String arg){
+
+    public void execute(String arg) {
         throw new WrongCommandException();
     }
+
     public void executeFromScript(InputStreamReader reader) {
         throw new WrongCommandException();
     }
-    public void executeFromScript(String arg, InputStreamReader reader){
+
+    public void executeFromScript(String arg, InputStreamReader reader) {
         throw new WrongCommandException();
     }
-    public void executeFromScript(){
+
+    public void executeFromScript() {
         this.executeFromScript((InputStreamReader) null);
     }
-    public void executeFromScript(String arg){
+
+    public void executeFromScript(String arg) {
         this.executeFromScript(arg, null);
     }
 

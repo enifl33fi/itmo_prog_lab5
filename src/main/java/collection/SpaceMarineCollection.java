@@ -17,8 +17,7 @@ public class SpaceMarineCollection implements InteractiveCollection {
     @Override
     public void info() {
         System.out.println("Initialization date: " + this.initDate);
-        System.out.println("Type of collection: " + this.data.getClass());
-        System.out.println("Type of stored element: " + this.data.getClass().getComponentType());
+        System.out.println("Type of collection: " + this.data.getClass().getName());
         System.out.println("Length of current collection: " + this.data.size());
     }
 

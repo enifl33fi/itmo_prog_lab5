@@ -21,7 +21,7 @@ public class GeneralVars {
 
     public static final String COMMAND_PACKAGE = "commands";
 
-    public static final CommandManager commandManager = CommandManager.getInstance();
+    public static final CommandManager COMMAND_MANAGER = CommandManager.getInstance();
     public static Stack<String> curExecutionFiles = new Stack<>();
     public static final ElementValidator ELEMENT_VALIDATOR = new ElementValidator();
     public static final CommandParser COMMAND_PARSER = new CommandParser();

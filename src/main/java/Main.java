@@ -1,20 +1,19 @@
 import ControlPart.ProgramPerformer;
+import InputWorkers.WorkFileGetter;
 import collection.CollectionGenerator;
-import ControlPart.GeneralVars;
+import exceptions.NullSystemVariableException;
 
 
 public class Main {
     public static void main(String[] args) {
         CollectionGenerator collectionGenerator = new CollectionGenerator();
+        WorkFileGetter workFileGetter = new WorkFileGetter();
         try {
-            collectionGenerator.generateFromCSV(System.getenv(GeneralVars.SYSTEM_VARIABLE));
-        } catch (NullPointerException e) {
+            collectionGenerator.generateFromCSV(workFileGetter.getWorkFile());
+            ProgramPerformer.start();
+        } catch (NullSystemVariableException e){
             System.out.println(e.getMessage());
-            System.out.println("Couldn't find needed system variable¯\\_(ツ)_/¯");
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            System.out.println("Unreachable block. Just in case.");
         }
-        ProgramPerformer.start();
+
     }
 }

@@ -3,17 +3,10 @@ package commands;
 import java.io.InputStreamReader;
 
 public class ExitCommand extends CommandWithOutArgs {
-    private static ExitCommand exitCommand;
 
-    private ExitCommand(String name) {
+    public ExitCommand(String name) {
         super(name);
-    }
-
-    public static ExitCommand getInstance() {
-        if (exitCommand == null) {
-            exitCommand = new ExitCommand("exit");
-        }
-        return exitCommand;
+        this.setDescription("exit : end the program (without saving it to a file)");
     }
 
     @Override

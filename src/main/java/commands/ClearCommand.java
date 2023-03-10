@@ -5,17 +5,10 @@ import ControlPart.GeneralVars;
 import java.io.InputStreamReader;
 
 public class ClearCommand extends CommandWithOutArgs {
-    private static ClearCommand clearCommand;
 
-    private ClearCommand(String name) {
+    public ClearCommand(String name) {
         super(name);
-    }
-
-    public static ClearCommand getInstance() {
-        if (clearCommand == null) {
-            clearCommand = new ClearCommand("clear");
-        }
-        return clearCommand;
+        this.setDescription("clear : clear the collection");
     }
 
     @Override
@@ -27,5 +20,13 @@ public class ClearCommand extends CommandWithOutArgs {
     @Override
     public void executeFromScript(InputStreamReader reader) {
         this.execute();
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

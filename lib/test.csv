@@ -1,9 +1,0 @@
-name,x,y,health,heartCount,category,meleeWeapon,chapterName,marinesCount,id,creationDate
-123,1,2,1.0,1,,,I,3,1,Thu Mar 02 04:38:51 MSK 2023
-123,1,2,1.0,1,,,I,3,2,Thu Mar 02 04:55:04 MSK 2023
-123,1,2,1.0,1,,,I,3,3,Thu Mar 02 04:56:02 MSK 2023
-13,1,2,1.0,3,,,I,9,4,Thu Mar 02 14:52:25 MSK 2023
-13,1,2,1.0,3,,,I,9,5,Thu Mar 02 17:00:50 MSK 2023
- ,21,1,1.0E38,2,TERMINATOR,POWER_SWORD,f,3,6,Fri Mar 03 00:13:29 MSK 2023
-1,1,1,1.0E215,1,,,12,234,7,Fri Mar 03 00:14:18 MSK 2023
-da,1,1,Infinity,3,,,23,2,8,Fri Mar 03 00:15:37 MSK 2023

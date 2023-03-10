@@ -7,7 +7,7 @@ import element.CollectionPart;
 
 public class SpaceMarineCollection implements InteractiveCollection {
     private LinkedList<CollectionPart> data = new LinkedList<>();
-    private java.time.LocalDate initDate;
+    private final java.time.LocalDate initDate;
 
     public SpaceMarineCollection() {
         this.initDate = java.time.LocalDate.now();
@@ -58,6 +58,7 @@ public class SpaceMarineCollection implements InteractiveCollection {
                 break;
             }
         }
+        System.out.println("No such id.");
     }
 
     @Override

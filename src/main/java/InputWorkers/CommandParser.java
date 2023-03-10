@@ -5,13 +5,12 @@ import ControlPart.GeneralVars;
 import exceptions.WrongCommandException;
 
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class CommandParser {
 
-    private static CommandManager commandManager = GeneralVars.commandManager;
+    private static final CommandManager COMMAND_MANAGER = GeneralVars.COMMAND_MANAGER;
     private static Scanner console = new Scanner(System.in);
 
 
@@ -22,14 +21,14 @@ public class CommandParser {
                 throw new WrongCommandException();
             }
             try {
-                commandManager.getCommand(commandParts[0]).execute(commandParts[1]);
+                COMMAND_MANAGER.getCommand(commandParts[0]).execute(commandParts[1]);
             }catch (IndexOutOfBoundsException | WrongCommandException ignored){
                 if (commandParts.length == 2){
                     throw new WrongCommandException();
                 }
             }
 
-            commandManager.getCommand(commandParts[0]).execute();
+            COMMAND_MANAGER.getCommand(commandParts[0]).execute();
 
         }  catch (IllegalStateException e) {
             System.out.println(e.getMessage());
@@ -58,13 +57,13 @@ public class CommandParser {
                 throw new WrongCommandException();
             }
             try {
-                commandManager.getCommand(commandParts[0]).executeFromScript(commandParts[1], reader);
+                COMMAND_MANAGER.getCommand(commandParts[0]).executeFromScript(commandParts[1], reader);
             }catch (IndexOutOfBoundsException | WrongCommandException ignored){
                 if (commandParts.length == 2){
                     throw new WrongCommandException();
                 }
             }
-            commandManager.getCommand(commandParts[0]).executeFromScript(reader);
+            COMMAND_MANAGER.getCommand(commandParts[0]).executeFromScript(reader);
 
 
         } catch (IllegalStateException e) {

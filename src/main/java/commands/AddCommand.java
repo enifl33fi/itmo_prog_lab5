@@ -6,19 +6,18 @@ import InputWorkers.ElementParser;
 import java.io.InputStreamReader;
 
 public class AddCommand extends CommandWithElem {
-    private static AddCommand addCommand;
     private static final ElementParser elementParser = new ElementParser();
 
-    private AddCommand(String name) {
+    public AddCommand(String name) {
         super(name);
+        this.setDescription("add {element} : add a new element to the collection");
     }
 
-    public static AddCommand getInstance() {
-        if (addCommand == null) {
-            addCommand = new AddCommand("add");
-        }
-        return addCommand;
+    @Override
+    public String descr() {
+        return this.description;
     }
+
 
     @Override
     public void execute() {
@@ -40,4 +39,5 @@ public class AddCommand extends CommandWithElem {
             System.out.println("add failed");
         }
     }
+
 }

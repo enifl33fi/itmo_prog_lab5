@@ -9,8 +9,8 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class ElementParser {
-    private static final ElementValidator elementValidator = new ElementValidator();
-    Scanner console = new Scanner(System.in);
+    private static final ElementValidator ELEMENT_VALIDATOR = new ElementValidator();
+    private Scanner console = new Scanner(System.in);
 
 
     public String parseName() {
@@ -20,7 +20,7 @@ public class ElementParser {
                         Please enter the field name.
                         Note: The field cannot be null or empty. The field cannot contain commas.
                         """);
-                String name = elementValidator.validateName(this.console.nextLine());
+                String name = ELEMENT_VALIDATOR.validateName(this.console.nextLine());
                 return name;
             } catch (NullFieldException | WrongFieldException e) {
                 System.out.println(e.getMessage());
@@ -47,7 +47,7 @@ public class ElementParser {
                         Please enter the field x in Coordinates.
                         Note: x is a numeric field. The value of the field must be less than or equal to 201.
                         """);
-                int x = elementValidator.validateX(this.console.nextLine());
+                int x = ELEMENT_VALIDATOR.validateX(this.console.nextLine());
                 return x;
             } catch (WrongFieldException | IllegalArgumentException e) {
                 System.out.println(e.getMessage());
@@ -74,7 +74,7 @@ public class ElementParser {
                         Please enter the field y in Coordinates.
                         Note: y is a numeric field. The value of the field must be greater than -440.
                         """);
-                int y = elementValidator.validateY(this.console.nextLine());
+                int y = ELEMENT_VALIDATOR.validateY(this.console.nextLine());
                 return y;
             } catch (WrongFieldException | IllegalArgumentException e) {
                 System.out.println(e.getMessage());
@@ -101,7 +101,7 @@ public class ElementParser {
                         Please enter the field health.
                         Note: Health is a fractional field. The field can be null. The value of the field must be greater than 0.
                         """);
-                Double health = elementValidator.validateHealth(this.console.nextLine());
+                Double health = ELEMENT_VALIDATOR.validateHealth(this.console.nextLine());
                 return health;
             } catch (WrongFieldException | IllegalArgumentException e) {
                 System.out.println(e.getMessage());
@@ -128,7 +128,7 @@ public class ElementParser {
                         Please enter the field heartCount.
                         Note: heartCount is a numeric field. The value of the field must be greater than 0.The value of the heartCount field must be less than or equal to 3.
                         """);
-                int heartCount = elementValidator.validateHeartCount(this.console.nextLine());
+                int heartCount = ELEMENT_VALIDATOR.validateHeartCount(this.console.nextLine());
                 return heartCount;
             } catch (WrongFieldException | IllegalArgumentException e) {
                 System.out.println(e.getMessage());
@@ -168,7 +168,7 @@ public class ElementParser {
                 } catch (NumberFormatException ignored) {
 
                 }
-                AstartesCategory category = elementValidator.validateCategory(line);
+                AstartesCategory category = ELEMENT_VALIDATOR.validateCategory(line);
                 return category;
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
@@ -208,7 +208,7 @@ public class ElementParser {
                 } catch (NumberFormatException ignored) {
 
                 }
-                MeleeWeapon meleeWeapon = elementValidator.validateMeleeWeapon(line);
+                MeleeWeapon meleeWeapon = ELEMENT_VALIDATOR.validateMeleeWeapon(line);
                 return meleeWeapon;
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
@@ -235,7 +235,7 @@ public class ElementParser {
                         Please enter the field name in Chapter.
                         Note: The field cannot be null or empty. The field cannot contain commas.
                         """);
-                String chapterName = elementValidator.validateChapterName(this.console.nextLine());
+                String chapterName = ELEMENT_VALIDATOR.validateChapterName(this.console.nextLine());
                 return chapterName;
             } catch (NullFieldException | WrongFieldException e) {
                 System.out.println(e.getMessage());
@@ -262,7 +262,7 @@ public class ElementParser {
                         Please enter the field marinesCount in Chapter.
                         Note: MarinesCount is a numeric field. The field can be null. The value of the field must be greater than 0, the maximum value of the field: 1000.
                         """);
-                Integer marinesCount = elementValidator.validateMarinesCount(this.console.nextLine());
+                Integer marinesCount = ELEMENT_VALIDATOR.validateMarinesCount(this.console.nextLine());
                 return marinesCount;
             } catch (WrongFieldException | IllegalArgumentException e) {
                 System.out.println(e.getMessage());

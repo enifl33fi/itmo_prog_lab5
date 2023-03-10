@@ -3,7 +3,7 @@ plugins {
 }
 
 group 'org.example'
-version 'dev-build'
+version 'dev_build'
 
 repositories {
     mavenCentral()

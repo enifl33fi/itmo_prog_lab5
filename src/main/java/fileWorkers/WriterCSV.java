@@ -16,7 +16,7 @@ public class WriterCSV {
             for (int i = 0; i < saveLines.size(); i++){
                 writter.write(saveLines.get(i) + "\n");
             }
-        } catch (FileNotFoundException | SecurityException e) {
+        } catch (FileNotFoundException | SecurityException | NullPointerException e) {
             System.out.println(e.getMessage());
             System.out.println("Couldn't find given file. It's impossible to save.");
         } catch (IOException e) {

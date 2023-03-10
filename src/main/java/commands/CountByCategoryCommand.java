@@ -7,18 +7,12 @@ import java.io.InputStreamReader;
 import java.util.Objects;
 
 public class CountByCategoryCommand extends CommandWithArgs {
-    private static CountByCategoryCommand countByCategoryCommand;
 
-    private CountByCategoryCommand(String name) {
+    public CountByCategoryCommand(String name) {
         super(name);
+        this.setDescription("count_by_category category : output the number of elements with a category value equal to the given one");
     }
 
-    public static CountByCategoryCommand getInstance() {
-        if (countByCategoryCommand == null) {
-            countByCategoryCommand = new CountByCategoryCommand("count_by_category");
-        }
-        return countByCategoryCommand;
-    }
 
     @Override
     public void execute(String arg) {

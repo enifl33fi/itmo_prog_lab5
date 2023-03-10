@@ -6,18 +6,12 @@ import exceptions.MaxRecursionDepthException;
 import java.io.InputStreamReader;
 
 public class ExecuteScriptCommand extends CommandWithArgs {
-    private static ExecuteScriptCommand executeScriptCommand;
 
-    private ExecuteScriptCommand(String name) {
+    public ExecuteScriptCommand(String name) {
         super(name);
+        this.setDescription("execute_script file_name : read and execute a script from the specified file. The script contains commands in the same form as the user enters them in interactive mode.");
     }
 
-    public static ExecuteScriptCommand getInstance() {
-        if (executeScriptCommand == null) {
-            executeScriptCommand = new ExecuteScriptCommand("execute_script");
-        }
-        return executeScriptCommand;
-    }
 
     @Override
     public void execute(String arg) {

@@ -42,12 +42,10 @@ public class CollectionGenerator {
                     ids.add(spaceMarine.getId());
 
                 } catch (ParseException e) {
-                    System.out.println(e.getMessage());
                     System.out.println("Not correct pattern for data.\nCorrect pattern: EEE MMM dd kk:mm:ss z yyyy.");
                     System.out.println("The whole line number " + i + " will be lost. Sorry <(。_。)>");
-                } catch (NumberFormatException e) {
-                    System.out.println(e.getMessage());
-                    System.out.println("One of number-format fields was empty");
+                } catch (NumberFormatException e) {;
+                    System.out.println("One of number-format fields was empty or string");
                     System.out.println("The whole line number " + i + " will be lost. Sorry <(。_。)>");
                 } catch (WrongFieldException | NullFieldException | IdCollapseException e) {
                     System.out.println(e.getMessage());
@@ -59,7 +57,9 @@ public class CollectionGenerator {
                 }
                 line = reader.getLine(inputStream);
             }
-        } catch (SecurityException | IOException e) {
+            GeneralVars.saveFileName = fileName;
+            System.out.println("Collection reading completed.");
+        } catch (SecurityException | IOException | NullPointerException e) {
             System.out.println(e.getMessage());
             System.out.println("Couldn't find given file. It's impossible to read");
         } catch (Exception e) {
@@ -67,6 +67,6 @@ public class CollectionGenerator {
             e.printStackTrace();
             System.out.println("Unreachable block. Just in case.");
         }
-        GeneralVars.saveFileName = fileName;
+
     }
 }

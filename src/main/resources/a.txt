@@ -10,5 +10,31 @@ add
 I
 9
 show
-save
+count_by_category TERMINATOR
+count_by_category T
+filter_contains_name 1
+filter_contains_name
+head
+head 2
+help
+info
+print_field_ascending_heart_count
+remove_by_id id
+remove_by_id 100500
+remove_by_id 7
+remove_first
+remove_lower
+add
+13
+1
+2
+1.0
+3
+
+
+I
+9
+show
+
 execute_script D:\itmo\programming\lab5\src\main\resources\b.txt
+save

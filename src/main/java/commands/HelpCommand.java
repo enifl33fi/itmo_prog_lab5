@@ -4,18 +4,12 @@ import java.io.InputStreamReader;
 
 public class HelpCommand extends CommandWithOutArgs {
 
-    private static HelpCommand helpCommand;
 
-    private HelpCommand(String name) {
+    public HelpCommand(String name) {
         super(name);
+        this.setDescription("help : print help for available commands");
     }
 
-    public static HelpCommand getInstance() {
-        if (helpCommand == null) {
-            helpCommand = new HelpCommand("help");
-        }
-        return helpCommand;
-    }
 
     @Override
     public void execute() {

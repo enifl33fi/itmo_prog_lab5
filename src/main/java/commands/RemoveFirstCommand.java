@@ -5,18 +5,12 @@ import ControlPart.GeneralVars;
 import java.io.InputStreamReader;
 
 public class RemoveFirstCommand extends CommandWithOutArgs {
-    private static RemoveFirstCommand removeFirstCommand;
 
-    private RemoveFirstCommand(String name) {
+    public RemoveFirstCommand(String name) {
         super(name);
+        this.setDescription("remove_first : remove the first item in the collection");
     }
 
-    public static RemoveFirstCommand getInstance() {
-        if (removeFirstCommand == null) {
-            removeFirstCommand = new RemoveFirstCommand("remove_first");
-        }
-        return removeFirstCommand;
-    }
 
     @Override
     public void execute() {

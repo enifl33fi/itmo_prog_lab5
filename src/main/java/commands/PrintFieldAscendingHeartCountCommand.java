@@ -5,18 +5,12 @@ import ControlPart.GeneralVars;
 import java.io.InputStreamReader;
 
 public class PrintFieldAscendingHeartCountCommand extends CommandWithOutArgs {
-    private static PrintFieldAscendingHeartCountCommand printFieldAscendingHeartCountCommand;
 
-    private PrintFieldAscendingHeartCountCommand(String name) {
+    public PrintFieldAscendingHeartCountCommand(String name) {
         super(name);
+        this.setDescription("print_field_ascending_heart_count : print the heartCount values of all elements in ascending order");
     }
 
-    public static PrintFieldAscendingHeartCountCommand getInstance() {
-        if (printFieldAscendingHeartCountCommand == null) {
-            printFieldAscendingHeartCountCommand = new PrintFieldAscendingHeartCountCommand("print_field_ascending_heart_count");
-        }
-        return printFieldAscendingHeartCountCommand;
-    }
 
     @Override
     public void execute() {

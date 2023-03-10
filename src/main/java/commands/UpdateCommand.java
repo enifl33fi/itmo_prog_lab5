@@ -6,18 +6,11 @@ import InputWorkers.ElementParser;
 import java.io.InputStreamReader;
 
 public class UpdateCommand extends CommandWithElem {
-    private static UpdateCommand updateCommand;
     private static final ElementParser elementParser = new ElementParser();
 
-    private UpdateCommand(String name) {
+    public UpdateCommand(String name) {
         super(name);
-    }
-
-    public static UpdateCommand getInstance() {
-        if (updateCommand == null) {
-            updateCommand = new UpdateCommand("update");
-        }
-        return updateCommand;
+        this.setDescription("update id {element} : update the value of an element in the collection whose id is equal to the given one");
     }
 
     @Override

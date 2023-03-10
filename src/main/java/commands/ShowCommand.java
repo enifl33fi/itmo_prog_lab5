@@ -5,18 +5,12 @@ import ControlPart.GeneralVars;
 import java.io.InputStreamReader;
 
 public class ShowCommand extends CommandWithOutArgs {
-    private static ShowCommand showCommand;
 
-    private ShowCommand(String name) {
+    public ShowCommand(String name) {
         super(name);
+        this.setDescription("show : print all items of the collection as string output in the standard output");
     }
 
-    public static ShowCommand getInstance() {
-        if (showCommand == null) {
-            showCommand = new ShowCommand("show");
-        }
-        return showCommand;
-    }
 
     @Override
     public void execute() {

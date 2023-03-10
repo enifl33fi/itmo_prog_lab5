@@ -5,18 +5,12 @@ import ControlPart.GeneralVars;
 import java.io.InputStreamReader;
 
 public class InfoCommand extends CommandWithOutArgs {
-    private static InfoCommand infoCommand;
 
-    private InfoCommand(String name) {
+    public InfoCommand(String name) {
         super(name);
+        this.setDescription("info : print information about the collection (type, initialization date, number of items, etc.) in the standard output.");
     }
 
-    public static InfoCommand getInstance() {
-        if (infoCommand == null) {
-            infoCommand = new InfoCommand("info");
-        }
-        return infoCommand;
-    }
 
     @Override
     public void execute() {

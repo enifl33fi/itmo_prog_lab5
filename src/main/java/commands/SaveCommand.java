@@ -5,18 +5,12 @@ import fileWorkers.WriterCSV;
 import java.io.InputStreamReader;
 
 public class SaveCommand extends CommandWithOutArgs {
-    private static SaveCommand saveCommand;
 
-    private SaveCommand(String name) {
+    public SaveCommand(String name) {
         super(name);
+        this.setDescription("save : save the collection to a file");
     }
 
-    public static SaveCommand getInstance() {
-        if (saveCommand == null) {
-            saveCommand = new SaveCommand("save");
-        }
-        return saveCommand;
-    }
 
     @Override
     public void execute() {

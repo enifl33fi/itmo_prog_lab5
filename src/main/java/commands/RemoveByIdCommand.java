@@ -5,18 +5,12 @@ import ControlPart.GeneralVars;
 import java.io.InputStreamReader;
 
 public class RemoveByIdCommand extends CommandWithArgs {
-    private static RemoveByIdCommand removeByIdCommand;
 
-    private RemoveByIdCommand(String name) {
+    public RemoveByIdCommand(String name) {
         super(name);
+        this.setDescription("remove_by_id id : remove an item from the collection by its id");
     }
 
-    public static RemoveByIdCommand getInstance() {
-        if (removeByIdCommand == null) {
-            removeByIdCommand = new RemoveByIdCommand("remove_by_id");
-        }
-        return removeByIdCommand;
-    }
 
     @Override
     public void execute(String arg) {

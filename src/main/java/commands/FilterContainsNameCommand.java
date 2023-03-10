@@ -5,18 +5,12 @@ import ControlPart.GeneralVars;
 import java.io.InputStreamReader;
 
 public class FilterContainsNameCommand extends CommandWithArgs {
-    private static FilterContainsNameCommand filterContainsNameCommand;
 
-    private FilterContainsNameCommand(String name) {
+    public FilterContainsNameCommand(String name) {
         super(name);
+        this.setDescription("filter_contains_name name : output the elements whose name field value contains the specified substring");
     }
 
-    public static FilterContainsNameCommand getInstance() {
-        if (filterContainsNameCommand == null) {
-            filterContainsNameCommand = new FilterContainsNameCommand("filter_contains_name");
-        }
-        return filterContainsNameCommand;
-    }
 
     @Override
     public void execute(String arg) {

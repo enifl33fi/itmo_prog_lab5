@@ -5,17 +5,10 @@ import ControlPart.GeneralVars;
 import java.io.InputStreamReader;
 
 public class HeadCommand extends CommandWithOutArgs {
-    private static HeadCommand headCommand;
 
-    private HeadCommand(String name) {
+    public HeadCommand(String name) {
         super(name);
-    }
-
-    public static HeadCommand getInstance() {
-        if (headCommand == null) {
-            headCommand = new HeadCommand("head");
-        }
-        return headCommand;
+        this.setDescription("head : display the first element in the collection");
     }
 
     @Override

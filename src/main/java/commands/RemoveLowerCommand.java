@@ -6,18 +6,11 @@ import InputWorkers.ElementParser;
 import java.io.InputStreamReader;
 
 public class RemoveLowerCommand extends CommandWithElem {
-    private static RemoveLowerCommand removeLowerCommand;
     private static final ElementParser elementParser = new ElementParser();
 
-    private RemoveLowerCommand(String name) {
+    public RemoveLowerCommand(String name) {
         super(name);
-    }
-
-    public static RemoveLowerCommand getInstance() {
-        if (removeLowerCommand == null) {
-            removeLowerCommand = new RemoveLowerCommand("remove_lower");
-        }
-        return removeLowerCommand;
+        this.setDescription("remove_lower {element} : remove all elements from the collection that are smaller than the given one");
     }
 
     @Override

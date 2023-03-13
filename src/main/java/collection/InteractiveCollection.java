@@ -6,33 +6,33 @@ import element.CollectionPart;
 import java.util.List;
 
 public interface InteractiveCollection {
-    void info();
+  void info();
 
-    void add(CollectionPart elem);
+  void add(CollectionPart elem);
 
-    int size();
+  int size();
 
-    void show();
+  void show();
 
-    void update(long id, CollectionPart elem);
+  void update(long id, CollectionPart elem);
 
-    void removeById(long id);
+  void removeById(long id);
 
-    void clear();
+  void clear();
 
-    void removeFirst();
+  void removeFirst();
 
-    void head();
+  void head();
 
-    void removeLower(CollectionPart elem);
+  void removeLower(CollectionPart elem);
 
-    int countByCategory(AstartesCategory category);
+  int countByCategory(AstartesCategory category);
 
-    void filterContainsName(String namePart);
+  void filterContainsName(String namePart);
 
-    void printFieldAscendingHeartCount();
+  void printFieldAscendingHeartCount();
 
-    List<String> toStringList();
+  List<String> toStringList();
 
-    void set(CollectionPart updelem, CollectionPart elem);
+  void set(CollectionPart updelem, CollectionPart elem);
 }

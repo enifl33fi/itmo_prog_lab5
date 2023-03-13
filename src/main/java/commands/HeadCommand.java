@@ -1,24 +1,24 @@
 package commands;
 
-import ControlPart.GeneralVars;
+import collection.InteractiveCollection;
 
 import java.io.InputStreamReader;
 
-public class HeadCommand extends CommandWithOutArgs {
+public class HeadCommand extends Command {
 
-    public HeadCommand(String name) {
-        super(name);
-        this.setDescription("head : display the first element in the collection");
-    }
+  public HeadCommand(InteractiveCollection curCol) {
+    super(curCol);
+    this.description = "head : display the first element in the collection";
+    this.name = "head";
+  }
 
-    @Override
-    public void execute() {
-        GeneralVars.curCol.head();
-        System.out.println("head completed");
-    }
+  @Override
+  public void execute() {
+    this.curCol.head();
+  }
 
-    @Override
-    public void executeFromScript(InputStreamReader reader) {
-        this.execute();
-    }
+  @Override
+  public void executeFromScript(InputStreamReader reader) {
+    this.execute();
+  }
 }

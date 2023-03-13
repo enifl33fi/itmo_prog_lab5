@@ -6,7 +6,7 @@ import element.AstartesCategory;
 import element.CollectionPart;
 
 public class SpaceMarineCollection implements InteractiveCollection {
-    private LinkedList<CollectionPart> data = new LinkedList<>();
+    private final LinkedList<CollectionPart> data = new LinkedList<>();
     private final java.time.LocalDate initDate;
 
     public SpaceMarineCollection() {
@@ -34,31 +34,44 @@ public class SpaceMarineCollection implements InteractiveCollection {
 
     @Override
     public void show() {
-        for (int i = 0; i < this.data.size(); i++) {
-            System.out.println(this.data.get(i));
+        for (CollectionPart curElem : this.data) {
+            System.out.println(curElem);
         }
     }
 
     @Override
     public void update(long id, CollectionPart elem) {
-        for (int i = 0; i < this.data.size(); i++) {
-            if (this.data.get(i).getId() == id) {
-                this.data.set(i, elem);
+        int i = 0;
+        elem.reduceNextId();
+        for (CollectionPart curElem : this.data) {
+            if (curElem.getId() == id) {
+                this.set(curElem, elem);
                 break;
             }
+            if (i == this.data.size() - 1){
+                System.out.println("No such id.");
+            }
+            i++;
         }
-        System.out.println("No such id.");
     }
 
     @Override
     public void removeById(long id) {
-        for (int i = 0; i < this.data.size(); i++) {
-            if (this.data.get(i).getId() == id) {
+        int i = 0;
+        if (this.data.size() == 0){
+            System.out.println("Collection is empty");
+        }
+        for (CollectionPart curElem : this.data) {
+            if (curElem.getId() == id) {
+                System.out.printf("Element with id %d deleted.%n", curElem.getId());
                 this.data.remove(i);
                 break;
             }
+            if (i == this.data.size() - 1){
+                System.out.println("No such id.");
+            }
+            i++;
         }
-        System.out.println("No such id.");
     }
 
     @Override
@@ -68,7 +81,11 @@ public class SpaceMarineCollection implements InteractiveCollection {
 
     @Override
     public void removeFirst() {
-        this.data.removeFirst();
+        try {
+            this.data.removeFirst();
+        } catch (NoSuchElementException e) {
+            System.out.println("Collection is empty");
+        }
     }
 
     @Override
@@ -82,19 +99,24 @@ public class SpaceMarineCollection implements InteractiveCollection {
 
     @Override
     public void removeLower(CollectionPart elem) {
-        for (int i = 0; i < this.data.size(); i++) {
-            if (elem.compareTo(this.data.get(i)) > 0) {
+        elem.reduceNextId();
+        for (int i = this.data.size() - 1; i >= 0; i--) {
+            CollectionPart curElem = this.data.get(i);
+            if (elem.compareTo(curElem) > 0) {
+                System.out.printf("Element with id %d deleted.%n", curElem.getId());
                 this.data.remove(i);
             }
         }
+
+
     }
 
     @Override
     public int countByCategory(AstartesCategory category) {
         int counter = 0;
-        for (int i = 0; i < this.data.size(); i++) {
+        for (CollectionPart curElem : this.data) {
 
-            if (Objects.equals(this.data.get(i).getCategory(), category)) {
+            if (Objects.equals(curElem.getCategory(), category)) {
                 counter++;
             }
         }
@@ -104,8 +126,7 @@ public class SpaceMarineCollection implements InteractiveCollection {
 
     @Override
     public void filterContainsName(String namePart) {
-        for (int i = 0; i < this.data.size(); i++) {
-            CollectionPart curElem = this.data.get(i);
+        for (CollectionPart curElem : this.data) {
             if (curElem.getName().contains(namePart)) {
                 System.out.println(curElem);
             }
@@ -115,22 +136,33 @@ public class SpaceMarineCollection implements InteractiveCollection {
     @Override
     public void printFieldAscendingHeartCount() {
         List<Integer> heartCounts = new ArrayList<>();
-        for (int i = 0; i < this.data.size(); i++) {
-            heartCounts.add(this.data.get(i).getHeartCount());
+        for (CollectionPart curElem : this.data) {
+            heartCounts.add(curElem.getHeartCount());
         }
         Collections.sort(heartCounts);
-        for (int j = 0; j < heartCounts.size(); j++) {
-            System.out.println(heartCounts.get(j));
+        for (Integer heartCount : heartCounts) {
+            System.out.println(heartCount);
         }
     }
 
     @Override
     public List<String> toStringList() {
         List<String> strList = new ArrayList<>();
-        for (int i = 0; i < this.data.size(); i++) {
-            strList.add(this.data.get(i).toLineCSV());
+        for (CollectionPart curElem : this.data) {
+            strList.add(curElem.toLineCSV());
         }
         return strList;
+    }
+
+    @Override
+    public void set(CollectionPart updElem, CollectionPart elem) {
+        updElem.setName(elem.getName());
+        updElem.setCoordinates(elem.getCoordinates());
+        updElem.setHealth(elem.getHealth());
+        updElem.setHeartCount(elem.getHeartCount());
+        updElem.setCategory(elem.getCategory());
+        updElem.setMeleeWeapon(elem.getMeleeWeapon());
+        updElem.setChapter(elem.getChapter());
     }
 
 

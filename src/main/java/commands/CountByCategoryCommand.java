@@ -1,28 +1,26 @@
 package commands;
 
-import ControlPart.GeneralVars;
+import collection.InteractiveCollection;
 import element.AstartesCategory;
 
 import java.io.InputStreamReader;
-import java.util.Objects;
 
-public class CountByCategoryCommand extends CommandWithArgs {
+public class CountByCategoryCommand extends Command {
 
-    public CountByCategoryCommand(String name) {
-        super(name);
-        this.setDescription("count_by_category category : output the number of elements with a category value equal to the given one");
-    }
+  public CountByCategoryCommand(InteractiveCollection curCol) {
+    super(curCol);
+    this.description =
+        "count_by_category category : output the number of elements with a category value equal to the given one";
+    this.name = "count_by_category";
+  }
 
+  @Override
+  public void execute(String arg) {
+    this.curCol.countByCategory(AstartesCategory.valueOf(arg));
+  }
 
-    @Override
-    public void execute(String arg) {
-        GeneralVars.curCol.countByCategory(AstartesCategory.valueOf(arg));
-        System.out.println("count_by_category completed");
-
-    }
-
-    @Override
-    public void executeFromScript(String arg, InputStreamReader reader) {
-        this.execute(arg);
-    }
+  @Override
+  public void executeFromScript(String arg, InputStreamReader reader) {
+    this.execute(arg);
+  }
 }

@@ -1,25 +1,25 @@
 package commands;
 
-import ControlPart.GeneralVars;
+import collection.InteractiveCollection;
 
 import java.io.InputStreamReader;
 
-public class PrintFieldAscendingHeartCountCommand extends CommandWithOutArgs {
+public class PrintFieldAscendingHeartCountCommand extends Command {
 
-    public PrintFieldAscendingHeartCountCommand(String name) {
-        super(name);
-        this.setDescription("print_field_ascending_heart_count : print the heartCount values of all elements in ascending order");
-    }
+  public PrintFieldAscendingHeartCountCommand(InteractiveCollection curCol) {
+    super(curCol);
+    this.description =
+        "print_field_ascending_heart_count : print the heartCount values of all elements in ascending order";
+    this.name = "print_field_ascending_heart_count";
+  }
 
+  @Override
+  public void execute() {
+    this.curCol.printFieldAscendingHeartCount();
+  }
 
-    @Override
-    public void execute() {
-        GeneralVars.curCol.printFieldAscendingHeartCount();
-        System.out.println("print_field_ascending_heart_count completed");
-    }
-
-    @Override
-    public void executeFromScript(InputStreamReader reader) {
-        this.execute();
-    }
+  @Override
+  public void executeFromScript(InputStreamReader reader) {
+    this.execute();
+  }
 }

@@ -1,7 +1,8 @@
 package exceptions;
 
 public class MaxRecursionDepthException extends RuntimeException {
-    private static final String msg = """
+  private static final String msg =
+      """
             Не надо шутить с рекурсией. Здесь другие правила.
             Это не Google, это не Yandex. Пользователь, твой компьютер здесь порвут на части.
             Тысячи отборных студентов ИТМО. Они все разнесут. Они весь код перелопатят за один час.
@@ -12,8 +13,7 @@ public class MaxRecursionDepthException extends RuntimeException {
             Ты рекурсию забудь, рекурсия отработала свое. Ты подумай о будущем программы. Она гибнет.
             """;
 
-    public MaxRecursionDepthException() {
-        super(msg);
-    }
-
+  public MaxRecursionDepthException() {
+    super(msg);
+  }
 }

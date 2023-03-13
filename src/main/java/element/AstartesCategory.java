@@ -1,8 +1,8 @@
 package element;
 
 public enum AstartesCategory {
-    TERMINATOR,
-    LIBRARIAN,
-    HELIX,
-    APOTHECARY;
+  TERMINATOR,
+  LIBRARIAN,
+  HELIX,
+  APOTHECARY;
 }

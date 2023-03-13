@@ -1,25 +1,24 @@
 package commands;
 
-import ControlPart.GeneralVars;
+import collection.InteractiveCollection;
 
 import java.io.InputStreamReader;
 
-public class RemoveFirstCommand extends CommandWithOutArgs {
+public class RemoveFirstCommand extends Command {
 
-    public RemoveFirstCommand(String name) {
-        super(name);
-        this.setDescription("remove_first : remove the first item in the collection");
-    }
+  public RemoveFirstCommand(InteractiveCollection curCol) {
+    super(curCol);
+    this.description = "remove_first : remove the first item in the collection";
+    this.name = "remove_first";
+  }
 
+  @Override
+  public void execute() {
+    this.curCol.removeFirst();
+  }
 
-    @Override
-    public void execute() {
-        GeneralVars.curCol.removeFirst();
-        System.out.println("remove_first completed");
-    }
-
-    @Override
-    public void executeFromScript(InputStreamReader reader) {
-        this.execute();
-    }
+  @Override
+  public void executeFromScript(InputStreamReader reader) {
+    this.execute();
+  }
 }

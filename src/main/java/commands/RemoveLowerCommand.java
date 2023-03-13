@@ -1,36 +1,36 @@
 package commands;
 
+import ControlPart.ElementValidator;
 import ControlPart.GeneralVars;
 import InputWorkers.ElementParser;
+import collection.InteractiveCollection;
+import fileWorkers.ReaderFiles;
 
 import java.io.InputStreamReader;
 
-public class RemoveLowerCommand extends CommandWithElem {
-    private static final ElementParser elementParser = new ElementParser();
+public class RemoveLowerCommand extends Command {
+  private final ElementParser elementParser = new ElementParser();
+  private final ElementValidator elementValidator = new ElementValidator();
+  private final ReaderFiles reader = new ReaderFiles();
 
-    public RemoveLowerCommand(String name) {
-        super(name);
-        this.setDescription("remove_lower {element} : remove all elements from the collection that are smaller than the given one");
-    }
+  public RemoveLowerCommand(InteractiveCollection curCol) {
+    super(curCol);
+    this.description =
+        "remove_lower {element} : remove all elements from the collection that are smaller than the given one";
+    this.name = "remove_lower";
+  }
 
-    @Override
-    public void execute() {
-        GeneralVars.curCol.removeLower(elementParser.parseElement());
-        System.out.println("remove_lower completed");
-    }
+  @Override
+  public void execute() {
+    this.curCol.removeLower(this.elementParser.parseElement());
+  }
 
-    @Override
-    public void executeFromScript(InputStreamReader reader) {
-        String[] spaceMarineParts = new String[GeneralVars.VAR_COUNT];
-        try {
-            for (int i = 0; i < GeneralVars.VAR_COUNT; i++) {
-                spaceMarineParts[i] = GeneralVars.READER_FILES.getLine(reader);
-            }
-            GeneralVars.curCol.removeLower(GeneralVars.ELEMENT_VALIDATOR.validateSpaceMarine(spaceMarineParts));
-            System.out.println("remove_lower completed");
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            System.out.println("remove_lower failed");
-        }
+  @Override
+  public void executeFromScript(InputStreamReader reader) {
+    String[] spaceMarineParts = new String[GeneralVars.VAR_COUNT - 2];
+    for (int i = 0; i < GeneralVars.VAR_COUNT - 2; i++) {
+      spaceMarineParts[i] = this.reader.getLine(reader);
     }
+    this.curCol.removeLower(this.elementValidator.validateSpaceMarine(spaceMarineParts));
+  }
 }

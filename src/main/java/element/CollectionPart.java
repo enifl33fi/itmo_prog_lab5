@@ -2,43 +2,43 @@ package element;
 
 import java.util.Date;
 
-
 public interface CollectionPart extends Comparable<CollectionPart> {
-    long getId();
+  long getId();
 
-    String getName();
+  String getName();
 
-    void setName(String name);
+  void setName(String name);
 
-    Coordinates getCoordinates();
+  Coordinates getCoordinates();
 
-    void setCoordinates(Coordinates coordinates);
+  void setCoordinates(Coordinates coordinates);
 
-    Date getCreationDate();
+  Date getCreationDate();
 
-    Double getHealth();
+  Double getHealth();
 
-    void setHealth(Double health);
+  void setHealth(Double health);
 
-    int getHeartCount();
+  int getHeartCount();
 
-    void setHeartCount(int heartCount);
+  void setHeartCount(int heartCount);
 
-    AstartesCategory getCategory();
+  AstartesCategory getCategory();
 
-    void setCategory(AstartesCategory category);
+  void setCategory(AstartesCategory category);
 
-    MeleeWeapon getMeleeWeapon();
+  MeleeWeapon getMeleeWeapon();
 
-    void setMeleeWeapon(MeleeWeapon meleeWeapon);
+  void setMeleeWeapon(MeleeWeapon meleeWeapon);
 
-    Chapter getChapter();
+  Chapter getChapter();
 
-    void setChapter(Chapter chapter);
+  void setChapter(Chapter chapter);
 
-    @Override
-    int compareTo(CollectionPart o);
+  @Override
+  int compareTo(CollectionPart o);
 
-    String toLineCSV();
+  String toLineCSV();
 
+  void reduceNextId();
 }

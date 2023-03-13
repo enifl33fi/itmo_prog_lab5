@@ -1,26 +1,28 @@
 package commands;
 
+import collection.InteractiveCollection;
 import fileWorkers.WriterCSV;
 
 import java.io.InputStreamReader;
 
-public class SaveCommand extends CommandWithOutArgs {
+public class SaveCommand extends Command {
 
-    public SaveCommand(String name) {
-        super(name);
-        this.setDescription("save : save the collection to a file");
-    }
+  private WriterCSV writerCSV = new WriterCSV();
 
+  public SaveCommand(InteractiveCollection curCol) {
+    super(curCol);
+    this.description = "save : save the collection to a file";
+    this.name = "save";
+  }
 
-    @Override
-    public void execute() {
-        WriterCSV writerCSV = new WriterCSV();
-        writerCSV.save();
-        System.out.println("save completed");
-    }
+  @Override
+  public void execute() {
 
-    @Override
-    public void executeFromScript(InputStreamReader reader) {
-        this.execute();
-    }
+    this.writerCSV.save(this.curCol);
+  }
+
+  @Override
+  public void executeFromScript(InputStreamReader reader) {
+    this.execute();
+  }
 }

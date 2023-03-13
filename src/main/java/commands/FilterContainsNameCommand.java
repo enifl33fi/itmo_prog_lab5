@@ -1,25 +1,25 @@
 package commands;
 
-import ControlPart.GeneralVars;
+import collection.InteractiveCollection;
 
 import java.io.InputStreamReader;
 
-public class FilterContainsNameCommand extends CommandWithArgs {
+public class FilterContainsNameCommand extends Command {
 
-    public FilterContainsNameCommand(String name) {
-        super(name);
-        this.setDescription("filter_contains_name name : output the elements whose name field value contains the specified substring");
-    }
+  public FilterContainsNameCommand(InteractiveCollection curCol) {
+    super(curCol);
+    this.description =
+        "filter_contains_name name : output the elements whose name field value contains the specified substring";
+    this.name = "filter_contains_name";
+  }
 
+  @Override
+  public void execute(String arg) {
+    this.curCol.filterContainsName(arg);
+  }
 
-    @Override
-    public void execute(String arg) {
-        GeneralVars.curCol.filterContainsName(arg);
-        System.out.println("filter_contains_name completed");
-    }
-
-    @Override
-    public void executeFromScript(String arg, InputStreamReader reader) {
-        this.execute(arg);
-    }
+  @Override
+  public void executeFromScript(String arg, InputStreamReader reader) {
+    this.execute(arg);
+  }
 }

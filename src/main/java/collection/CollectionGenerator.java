@@ -16,11 +16,11 @@ import java.text.ParseException;
 import java.util.*;
 
 public class CollectionGenerator {
-    public void generateFromCSV(String fileName) {
-        ReaderFiles reader = GeneralVars.READER_FILES;
+    private final ReaderFiles reader = new ReaderFiles();
+    public void generateFromCSV(String fileName, InteractiveCollection curCol) {
         try (InputStreamReader inputStream = new InputStreamReader(new FileInputStream(fileName))) {
-            String line = reader.getLine(inputStream);
-            line = reader.getLine(inputStream);
+            String line = this.reader.getLine(inputStream);
+            line = this.reader.getLine(inputStream);
             List<Long> ids = new ArrayList<>();
             ElementValidator elementValidator = new ElementValidator();
             int i = 0;
@@ -38,7 +38,7 @@ public class CollectionGenerator {
                 }
                 try {
                     SpaceMarine spaceMarine = elementValidator.validateSpaceMarine(info[0], info[1], info[2], info[3], info[4], info[5], info[6], info[7], info[8], info[9], ids, info[10]);
-                    GeneralVars.curCol.add(spaceMarine);
+                    curCol.add(spaceMarine);
                     ids.add(spaceMarine.getId());
 
                 } catch (ParseException e) {
@@ -55,13 +55,14 @@ public class CollectionGenerator {
                     e.printStackTrace();
                     System.out.println("Unreachable block. Just in case.");
                 }
-                line = reader.getLine(inputStream);
+                line = this.reader.getLine(inputStream);
             }
             GeneralVars.saveFileName = fileName;
             System.out.println("Collection reading completed.");
         } catch (SecurityException | IOException | NullPointerException e) {
             System.out.println(e.getMessage());
             System.out.println("Couldn't find given file. It's impossible to read");
+            System.out.println("It could be impossible to save");
         } catch (Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();

@@ -1,34 +1,47 @@
 package ControlPart;
 
 import InputWorkers.CommandParser;
+import exceptions.MaxRecursionDepthException;
 import fileWorkers.ReaderFiles;
-
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.List;
+import java.util.Stack;
 
 public class ScriptExecutor {
-    public static final ReaderFiles reader = new ReaderFiles();
+  private final ReaderFiles reader = new ReaderFiles();
+  private final CommandParser commandParser;
+  private Stack<String> curExecutionFiles = new Stack<>();
 
-    public void execute(String fileName) {
-        GeneralVars.curExecutionFiles.push(fileName);
-        CommandParser commandParser = new CommandParser();
-        try (InputStreamReader inputStream = new InputStreamReader(new FileInputStream(fileName))) {
-            String line = reader.getLine(inputStream);
-            while (line != null) {
+  public ScriptExecutor(CommandManager commandManager) {
+    this.commandParser = new CommandParser(commandManager);
+  }
 
-                commandParser.parseFromScript(line, inputStream);
-                line = reader.getLine(inputStream);
-            }
-            GeneralVars.curExecutionFiles.pop();
-        } catch (FileNotFoundException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Couldn't find given file. It's impossible to read");
-        } catch (IOException e) {
-            System.out.println("Unexpected abortion. Some commands will be lost");
+  public void execute(String fileName) {
+    try {
+      if (this.curExecutionFiles.search(fileName) != -1) {
+
+        throw new MaxRecursionDepthException();
+      }
+      this.curExecutionFiles.push(fileName);
+      try (InputStreamReader inputStream = new InputStreamReader(new FileInputStream(fileName))) {
+        String line = this.reader.getLine(inputStream);
+        while (line != null) {
+
+          commandParser.parse(line, inputStream);
+          line = this.reader.getLine(inputStream);
         }
+      } catch (FileNotFoundException | SecurityException | NullPointerException e) {
+        System.out.println(e.getMessage());
+        System.out.println("Couldn't read given file.");
+      } catch (IOException e) {
+        System.out.println("Unexpected abortion. Some commands will be lost");
+      }
+      this.curExecutionFiles.pop();
+    } catch (MaxRecursionDepthException e) {
+      System.out.println(e.getMessage());
     }
+  }
 }

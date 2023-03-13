@@ -1,32 +1,24 @@
 package commands;
 
-import ControlPart.GeneralVars;
+import collection.InteractiveCollection;
 
 import java.io.InputStreamReader;
 
-public class ClearCommand extends CommandWithOutArgs {
+public class ClearCommand extends Command {
 
-    public ClearCommand(String name) {
-        super(name);
-        this.setDescription("clear : clear the collection");
-    }
+  public ClearCommand(InteractiveCollection curCol) {
+    super(curCol);
+    this.description = "clear : clear the collection";
+    this.name = "clear";
+  }
 
-    @Override
-    public void execute() {
-        GeneralVars.curCol.clear();
-        System.out.println("clear completed");
-    }
+  @Override
+  public void execute() {
+    this.curCol.clear();
+  }
 
-    @Override
-    public void executeFromScript(InputStreamReader reader) {
-        this.execute();
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
+  @Override
+  public void executeFromScript(InputStreamReader reader) {
+    this.execute();
+  }
 }

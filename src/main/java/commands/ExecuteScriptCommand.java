@@ -1,34 +1,29 @@
 package commands;
 
-import ControlPart.GeneralVars;
-import exceptions.MaxRecursionDepthException;
+import ControlPart.ScriptExecutor;
+import collection.InteractiveCollection;
 
 import java.io.InputStreamReader;
 
-public class ExecuteScriptCommand extends CommandWithArgs {
+public class ExecuteScriptCommand extends Command {
 
-    public ExecuteScriptCommand(String name) {
-        super(name);
-        this.setDescription("execute_script file_name : read and execute a script from the specified file. The script contains commands in the same form as the user enters them in interactive mode.");
-    }
+  private final ScriptExecutor scriptExecutor;
 
+  public ExecuteScriptCommand(InteractiveCollection curCol, ScriptExecutor scriptExecutor) {
+    super(curCol);
+    this.scriptExecutor = scriptExecutor;
+    this.description =
+        "execute_script file_name : read and execute a script from the specified file. The script contains commands in the same form as the user enters them in interactive mode.";
+    this.name = "execute_script";
+  }
 
-    @Override
-    public void execute(String arg) {
-        try {
-            if (GeneralVars.curExecutionFiles.search(arg) != -1) {
+  @Override
+  public void execute(String arg) {
+    this.scriptExecutor.execute(arg);
+  }
 
-                throw new MaxRecursionDepthException();
-            }
-            GeneralVars.SCRIPT_EXECUTOR.execute(arg);
-        } catch (MaxRecursionDepthException e) {
-            System.out.println(e.getMessage());
-        }
-        System.out.println("execute_script completed");
-    }
-
-    @Override
-    public void executeFromScript(String arg, InputStreamReader reader) {
-        this.execute(arg);
-    }
+  @Override
+  public void executeFromScript(String arg, InputStreamReader reader) {
+    this.execute(arg);
+  }
 }

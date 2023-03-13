@@ -33,4 +33,6 @@ public interface InteractiveCollection {
     void printFieldAscendingHeartCount();
 
     List<String> toStringList();
+
+    void set(CollectionPart updelem, CollectionPart elem);
 }

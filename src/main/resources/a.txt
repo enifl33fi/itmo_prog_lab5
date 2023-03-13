@@ -1,3 +1,0 @@
-execute_script D:\itmo\programming\lab5\src\main\resources\a.txt
-execute_script
-execute_script D:\itmo\programming\lab5\src\main\resources\abc.txt

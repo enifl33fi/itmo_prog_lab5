@@ -1,7 +1,7 @@
 package collection;
 
-import ControlPart.ElementValidator;
-import ControlPart.GeneralVars;
+import controlPart.ElementValidator;
+import controlPart.GeneralVars;
 import element.*;
 import exceptions.IdCollapseException;
 import exceptions.NotEnoughFieldsException;
@@ -15,16 +15,30 @@ import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.util.*;
 
+/**
+ * Class that generates collection from CSV file.
+ *
+ * @author Kirill Markov
+ * @version 1.0
+ */
 public class CollectionGenerator {
+  /**
+   * simplifies reading. {@link fileWorkers.ReaderFiles}
+   */
   private final ReaderFiles reader = new ReaderFiles();
 
+  /**
+   * Creates objects from CSV representation and puts it into the collection.
+   * @param fileName  name of current csv file.
+   * @param curCol  current collection. {@link collection.InteractiveCollection}
+   */
   public void generateFromCSV(String fileName, InteractiveCollection curCol) {
     try (InputStreamReader inputStream = new InputStreamReader(new FileInputStream(fileName))) {
       String line = this.reader.getLine(inputStream);
       line = this.reader.getLine(inputStream);
       List<Long> ids = new ArrayList<>();
       ElementValidator elementValidator = new ElementValidator();
-      int i = 0;
+      int i = 1;
       while (line != null) {
         i++;
         String[] info = line.split(",", -1);
@@ -67,8 +81,8 @@ public class CollectionGenerator {
       System.out.println("Collection reading completed.");
     } catch (SecurityException | IOException | NullPointerException e) {
       System.out.println(e.getMessage());
-      System.out.println("Couldn't find given file. It's impossible to read");
-      System.out.println("It could be impossible to save");
+      System.out.println("Couldn't find given file. It's impossible to read.");
+      System.out.println("It could be impossible to save.");
     } catch (Exception e) {
       System.out.println(e.getMessage());
       e.printStackTrace();

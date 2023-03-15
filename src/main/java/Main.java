@@ -1,7 +1,7 @@
-import ControlPart.CommandLoader;
-import ControlPart.GeneralVars;
-import ControlPart.ProgramPerformer;
-import InputWorkers.WorkFileGetter;
+import controlPart.CommandLoader;
+import controlPart.GeneralVars;
+import controlPart.ProgramPerformer;
+import inputWorkers.WorkFileGetter;
 import collection.CollectionGenerator;
 import exceptions.NullSystemVariableException;
 

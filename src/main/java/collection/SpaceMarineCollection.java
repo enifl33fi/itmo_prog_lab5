@@ -5,14 +5,28 @@ import java.util.*;
 import element.AstartesCategory;
 import element.CollectionPart;
 
+/**
+ * Class that implements the collection with specified methods.
+ *
+ * @author Kirill Markov
+ * @version 1.0
+ */
 public class SpaceMarineCollection implements InteractiveCollection {
+  /**
+   * Collection for elements storing.
+   */
   private final LinkedList<CollectionPart> data = new LinkedList<>();
+  /**
+   * Collection initialization date.
+   */
   private final java.time.LocalDate initDate;
 
+  /**
+   * Constructs a new SpaceMarineCollection object. And set the initialization date.
+   */
   public SpaceMarineCollection() {
     this.initDate = java.time.LocalDate.now();
   }
-
   @Override
   public void info() {
     System.out.println("Initialization date: " + this.initDate);
@@ -40,7 +54,6 @@ public class SpaceMarineCollection implements InteractiveCollection {
   @Override
   public void update(long id, CollectionPart elem) {
     int i = 0;
-    elem.reduceNextId();
     for (CollectionPart curElem : this.data) {
       if (curElem.getId() == id) {
         this.set(curElem, elem);
@@ -97,7 +110,6 @@ public class SpaceMarineCollection implements InteractiveCollection {
 
   @Override
   public void removeLower(CollectionPart elem) {
-    elem.reduceNextId();
     Iterator<CollectionPart> iterator = this.data.iterator();
     CollectionPart curElem;
     while (iterator.hasNext()) {
@@ -110,7 +122,7 @@ public class SpaceMarineCollection implements InteractiveCollection {
   }
 
   @Override
-  public int countByCategory(AstartesCategory category) {
+  public void countByCategory(AstartesCategory category) {
     int counter = 0;
     for (CollectionPart curElem : this.data) {
 
@@ -119,7 +131,6 @@ public class SpaceMarineCollection implements InteractiveCollection {
       }
     }
     System.out.println(counter);
-    return counter;
   }
 
   @Override
@@ -144,7 +155,7 @@ public class SpaceMarineCollection implements InteractiveCollection {
   }
 
   @Override
-  public List<String> toStringList() {
+  public List<String> toListCSV() {
     List<String> strList = new ArrayList<>();
     for (CollectionPart curElem : this.data) {
       strList.add(curElem.toLineCSV());

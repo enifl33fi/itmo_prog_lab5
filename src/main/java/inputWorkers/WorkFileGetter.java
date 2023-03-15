@@ -1,13 +1,22 @@
-package InputWorkers;
+package inputWorkers;
 
-import ControlPart.GeneralVars;
+import controlPart.GeneralVars;
 import exceptions.NullSystemVariableException;
 
 import java.util.Scanner;
 
+/**
+ * Class for getting work file if there is not required system variable.
+ * @author Kirill Markov
+ * @version 1.0
+ */
 public class WorkFileGetter {
   private final Scanner console = new Scanner(System.in);
 
+  /**
+   * Returns work file's name.
+   * @return work file's name.
+   */
   public String getWorkFile() {
     String fileName = System.getenv(GeneralVars.SYSTEM_VARIABLE);
 

@@ -1,6 +1,6 @@
-package InputWorkers;
+package inputWorkers;
 
-import ControlPart.ElementValidator;
+import controlPart.ElementValidator;
 import element.*;
 import exceptions.NullFieldException;
 import exceptions.WrongFieldException;
@@ -8,10 +8,23 @@ import exceptions.WrongFieldException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
+/**
+ * Class for parsing element.
+ * @author Kirill Markov
+ * @version 1.0
+ */
 public class ElementParser {
+  /**
+   * Object for validating fields.
+   */
   private final ElementValidator elementValidator = new ElementValidator();
+
   private Scanner console = new Scanner(System.in);
 
+  /**
+   * Tries to get the value of the name until it gets valid.
+   * @return name
+   */
   public String parseName() {
     while (true) {
       try {
@@ -19,6 +32,7 @@ public class ElementParser {
             """
                         Please enter the field name.
                         Note: The field cannot be null or empty. The field cannot contain commas.
+                        Addition: Be careful, insignificant spaces are deleted. So a string of spaces is considered empty.
                         """);
         String name = this.elementValidator.validateName(this.console.nextLine());
         return name;
@@ -39,6 +53,10 @@ public class ElementParser {
       }
     }
   }
+  /**
+   * Tries to get the value of the x until it gets valid.
+   * @return x
+   */
 
   public int parseX() {
     while (true) {
@@ -67,7 +85,10 @@ public class ElementParser {
       }
     }
   }
-
+  /**
+   * Tries to get the value of the y until it gets valid.
+   * @return y
+   */
   public int parseY() {
     while (true) {
       try {
@@ -95,7 +116,10 @@ public class ElementParser {
       }
     }
   }
-
+  /**
+   * Tries to get the value of the health until it gets valid.
+   * @return health
+   */
   public Double parseHealth() {
     while (true) {
       try {
@@ -123,14 +147,17 @@ public class ElementParser {
       }
     }
   }
-
+  /**
+   * Tries to get the value of the heartCount until it gets valid.
+   * @return heartCount
+   */
   public int parseHeartCount() {
     while (true) {
       try {
         System.out.println(
             """
                         Please enter the field heartCount.
-                        Note: heartCount is a numeric field. The value of the field must be greater than 0.The value of the heartCount field must be less than or equal to 3.
+                        Note: heartCount is a numeric field. The value of the field must be greater than 0.The value of the field must be less than or equal to 3.
                         """);
         int heartCount = elementValidator.validateHeartCount(this.console.nextLine());
         return heartCount;
@@ -151,7 +178,10 @@ public class ElementParser {
       }
     }
   }
-
+  /**
+   * Tries to get the value of the category until it gets valid.
+   * @return category
+   */
   public AstartesCategory parseCategory() {
     AstartesCategory[] allCategoryValues = AstartesCategory.values();
     while (true) {
@@ -191,8 +221,10 @@ public class ElementParser {
         System.out.println("Unreachable block. Just in case.");
       }
     }
-  }
-
+  }/**
+   * Tries to get the value of the meleeWeapon until it gets valid.
+   * @return meleeWeapon
+   */
   public MeleeWeapon parseMeleeWeapon() {
     MeleeWeapon[] allWeaponValues = MeleeWeapon.values();
     while (true) {
@@ -233,7 +265,10 @@ public class ElementParser {
       }
     }
   }
-
+  /**
+   * Tries to get the value of the chapterName until it gets valid.
+   * @return chapterName
+   */
   public String parseChapterName() {
     while (true) {
       try {
@@ -241,6 +276,7 @@ public class ElementParser {
             """
                         Please enter the field name in Chapter.
                         Note: The field cannot be null or empty. The field cannot contain commas.
+                        Addition: Be careful, insignificant spaces are deleted. So a string of spaces is considered empty.
                         """);
         String chapterName = elementValidator.validateChapterName(this.console.nextLine());
         return chapterName;
@@ -262,6 +298,10 @@ public class ElementParser {
     }
   }
 
+  /**
+   * Tries to get the value of the marinesCount until it gets valid.
+   * @return marinesCount
+   */
   public Integer parseMarinesCount() {
     while (true) {
       try {
@@ -289,7 +329,10 @@ public class ElementParser {
       }
     }
   }
-
+  /**
+   * Executes the other methods one by one.
+   * @return SpaceMarine
+   */
   public SpaceMarine parseElement() {
     String name = this.parseName();
     Coordinates coordinates = new Coordinates(this.parseX(), this.parseY());

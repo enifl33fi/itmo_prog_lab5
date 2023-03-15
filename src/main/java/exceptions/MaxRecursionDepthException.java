@@ -1,6 +1,14 @@
 package exceptions;
 
+/**
+ * Thrown when find recursion of executed scripts.
+ * @author Kirill Markov
+ * @version 1.0
+ */
 public class MaxRecursionDepthException extends RuntimeException {
+  /**
+   * message for exception
+   */
   private static final String msg =
       """
             Не надо шутить с рекурсией. Здесь другие правила.
@@ -12,7 +20,9 @@ public class MaxRecursionDepthException extends RuntimeException {
             И другой чудак был, тоже рекурсию запустил, и рухнул Советский Союз. И ты повторишь ту же ошибку.
             Ты рекурсию забудь, рекурсия отработала свое. Ты подумай о будущем программы. Она гибнет.
             """;
-
+  /**
+   * Constructs new MaxRecursionDepthException with specified message.
+   */
   public MaxRecursionDepthException() {
     super(msg);
   }

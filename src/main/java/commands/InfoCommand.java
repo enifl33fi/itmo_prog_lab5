@@ -4,8 +4,16 @@ import collection.InteractiveCollection;
 
 import java.io.InputStreamReader;
 
+/** Class using for executing info command.
+ * @author Kirill Markov
+ * @version 1.0*/
 public class InfoCommand extends Command {
-
+  /**
+   * Constructs new InfoCommand object with current collection and set the description and
+   * the name(as <b>info</b>)
+   *
+   * @param curCol current collection.
+   */
   public InfoCommand(InteractiveCollection curCol) {
     super(curCol);
     this.description =
@@ -13,13 +21,14 @@ public class InfoCommand extends Command {
     this.name = "info";
   }
 
+  /**
+   * Prints information about current collection.
+   * Such as initialization date, size etc.
+   *
+   * @param reader reader for files. Null if command was called from the console.
+   */
   @Override
-  public void execute() {
+  public void execute(InputStreamReader reader) {
     this.curCol.info();
-  }
-
-  @Override
-  public void executeFromScript(InputStreamReader reader) {
-    this.execute();
   }
 }

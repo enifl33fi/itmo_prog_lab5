@@ -1,6 +1,6 @@
 package fileWorkers;
 
-import ControlPart.GeneralVars;
+import controlPart.GeneralVars;
 import collection.InteractiveCollection;
 
 import java.io.BufferedWriter;
@@ -9,14 +9,23 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Class that saves collection's elements to CSV file.
+ * @author Kirill Markov
+ * @version 1.0
+ */
 public class WriterCSV {
+  /**
+   * Saves given collection's elements to CSV file.
+   * @param curCol given collection. {@link collection.InteractiveCollection}
+   */
   public void save(InteractiveCollection curCol) {
     try (BufferedWriter writter =
         new BufferedWriter(new FileWriter(GeneralVars.saveFileName, false))) {
-      List<String> saveLines = curCol.toStringList();
+      List<String> saveLines = curCol.toListCSV();
       writter.write(GeneralVars.HEADLINES + "\n");
-      for (int i = 0; i < saveLines.size(); i++) {
-        writter.write(saveLines.get(i) + "\n");
+      for (String saveLine : saveLines) {
+        writter.write(saveLine + "\n");
       }
     } catch (FileNotFoundException | SecurityException | NullPointerException e) {
       System.out.println(e.getMessage());

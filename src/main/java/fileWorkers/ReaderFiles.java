@@ -28,12 +28,13 @@ public class ReaderFiles {
     int cur, prev = -2;
     StringBuilder line = new StringBuilder();
     while ((cur = fileReader.read()) != -1) {
-      if ((cur == asciin || cur == asciir) && prev != -2) {
+      if (cur == asciir){
+        cur = fileReader.read();
+      }
+      if (cur == asciin) {
         newLine = true;
       } else {
-        if (cur != asciin) {
-          line.append((char) cur);
-        }
+        line.append((char) cur);
       }
       if (newLine) {
         return line.toString();

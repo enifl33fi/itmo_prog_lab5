@@ -1,1 +1,10 @@
-show
+add
+abc
+2
+2
+2
+2
+TERMINATOR
+
+chname
+1000

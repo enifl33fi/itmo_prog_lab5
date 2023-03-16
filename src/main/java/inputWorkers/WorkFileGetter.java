@@ -3,6 +3,7 @@ package inputWorkers;
 import controlPart.GeneralVars;
 import exceptions.NullSystemVariableException;
 
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 /**
@@ -11,7 +12,7 @@ import java.util.Scanner;
  * @version 1.0
  */
 public class WorkFileGetter {
-  private final Scanner console = new Scanner(System.in);
+  private Scanner console = new Scanner(System.in);
 
   /**
    * Returns work file's name.
@@ -23,13 +24,23 @@ public class WorkFileGetter {
     if (fileName == null) {
       System.out.println("Couldn't find the required system variable.");
       System.out.println("Do you want to insert the name of required file (y/n).");
-      String answer = console.nextLine();
-      if (answer.equals("y")) {
-        System.out.println("Insert the name of required file:");
-        fileName = console.nextLine();
-      } else {
-        throw new NullSystemVariableException();
+      try{
+        String answer = console.nextLine();
+        if (answer.equals("y")) {
+          System.out.println("Insert the name of required file:");
+          fileName = console.nextLine();
+        } else {
+          throw new NullSystemVariableException();
+        }
+      } catch (NoSuchElementException e) {
+        System.out.println(e.getMessage());
+        System.exit(0);
+      } catch (IllegalStateException e) {
+        System.out.println(e.getMessage());
+        System.out.println("Idk how that happened. Never mind.");
+        console = new Scanner(System.in);
       }
+
     }
     return fileName;
   }
